@@ -12,3 +12,113 @@
     @content;
   }
 }
+
+// Typography
+@mixin heading-1 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  line-height: 3.625rem;
+  letter-spacing: 0.125rem;
+}
+
+@mixin heading-2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.0938rem;
+}
+
+@mixin heading-3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 2rem;
+  line-height: 2.25rem;
+  letter-spacing: 0.0719rem;
+}
+
+@mixin heading-4 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.75rem;
+  line-height: 2.375rem;
+  letter-spacing: 0.125rem;
+}
+
+@mixin heading-5 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 2.0625rem;
+  letter-spacing: 0.1062rem;
+}
+
+@mixin heading-6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.0813rem;
+}
+
+@mixin overline {
+  font-weight: 400;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  line-height: 1.1875rem;
+  letter-spacing: 0.625rem;
+  color: $primary-orange;
+}
+
+@mixin subtitle {
+  font-weight: 700;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  line-height: 1.5625rem;
+  letter-spacing: 0.0625rem;
+  color: $primary-orange;
+}
+
+@mixin body {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1.5625rem;
+}
+
+// Buttons
+@mixin primary-btn {
+  background-color: $primary-orange;
+  color: $secondary-white;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  letter-spacing: 0.0625rem;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  border: none;
+
+  &:hover {
+    background-color: $secondary-orange;
+  }
+}
+
+@mixin secondary-btn {
+  background-color: transparent;
+  border: 1px solid black;
+  color: $secondary-black;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  letter-spacing: 0.0625rem;
+  font-weight: 700;
+  font-size: 0.8125rem;
+
+  &:hover {
+    background-color: $secondary-black;
+    color: $secondary-white;
+  }
+}
+
+// Form Elements
+@mixin input-field {
+  padding-left: 1.125rem 1.5rem;
+}

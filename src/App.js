@@ -5,6 +5,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>MANROPE</h1>
+        <button className="primary-btn">Primary</button>
+        <button className="secondary-btn">Secondary</button>
       </header>
     </div>
   );

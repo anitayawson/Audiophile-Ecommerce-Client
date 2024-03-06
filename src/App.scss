@@ -2,8 +2,18 @@
 @use "./styles/partials/mixins" as *;
 
 html,
-body {
+body,
+button {
   box-sizing: border-box;
   margin: 0;
   font-family: Manrope;
+  color: $secondary-black;
+}
+
+.primary-btn {
+  @include primary-btn;
+}
+
+.secondary-btn {
+  @include secondary-btn;
 }
