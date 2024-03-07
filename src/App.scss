@@ -9,11 +9,3 @@ button {
   font-family: Manrope;
   color: $secondary-black;
 }
-
-.primary-btn {
-  @include primary-btn;
-}
-
-.secondary-btn {
-  @include secondary-btn;
-}

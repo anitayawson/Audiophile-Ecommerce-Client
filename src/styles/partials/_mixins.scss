@@ -20,6 +20,7 @@
   font-size: 3.5rem;
   line-height: 3.625rem;
   letter-spacing: 0.125rem;
+  margin: 0;
 }
 
 @mixin heading-2 {
@@ -28,6 +29,7 @@
   font-size: 2.5rem;
   line-height: 2.75rem;
   letter-spacing: 0.0938rem;
+  margin: 0;
 }
 
 @mixin heading-3 {
@@ -36,6 +38,7 @@
   font-size: 2rem;
   line-height: 2.25rem;
   letter-spacing: 0.0719rem;
+  margin: 0;
 }
 
 @mixin heading-4 {
@@ -44,6 +47,7 @@
   font-size: 1.75rem;
   line-height: 2.375rem;
   letter-spacing: 0.125rem;
+  margin: 0;
 }
 
 @mixin heading-5 {
@@ -52,6 +56,7 @@
   font-size: 1.5rem;
   line-height: 2.0625rem;
   letter-spacing: 0.1062rem;
+  margin: 0;
 }
 
 @mixin heading-6 {
@@ -60,6 +65,7 @@
   font-size: 1.125rem;
   line-height: 1.5rem;
   letter-spacing: 0.0813rem;
+  margin: 0;
 }
 
 @mixin overline {
@@ -68,7 +74,6 @@
   text-transform: uppercase;
   line-height: 1.1875rem;
   letter-spacing: 0.625rem;
-  color: $primary-orange;
 }
 
 @mixin subtitle {
@@ -78,12 +83,14 @@
   line-height: 1.5625rem;
   letter-spacing: 0.0625rem;
   color: $primary-orange;
+  margin: 0;
 }
 
 @mixin body {
   font-weight: 500;
   font-size: 0.9375rem;
   line-height: 1.5625rem;
+  margin: 0;
 }
 
 // Buttons

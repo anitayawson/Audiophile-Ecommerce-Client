@@ -1,13 +1,12 @@
 import "./App.scss";
+// import NavBar from "./components/NavBar/NavBar";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>MANROPE</h1>
-        <button className="primary-btn">Primary</button>
-        <button className="secondary-btn">Secondary</button>
-      </header>
+      {/* <NavBar /> */}
+      <Home />
     </div>
   );
 }

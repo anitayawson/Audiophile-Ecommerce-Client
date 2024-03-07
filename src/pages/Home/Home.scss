@@ -1,0 +1,38 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  background-image: url("../../assets/images/header-img-mobile.jpg");
+  background-color: $primary-black;
+  background-position: center;
+  background-size: cover;
+  height: 85vh;
+
+  &__body {
+    text-align: center;
+    margin-top: 7rem;
+  }
+
+  &__overline {
+    @include overline;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  &__title {
+    @include heading-2;
+    color: $secondary-white;
+    margin-bottom: 1.5rem;
+  }
+
+  &__description {
+    @include body;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 1.5rem 2rem;
+  }
+
+  &__btn {
+    @include primary-btn;
+  }
+}
