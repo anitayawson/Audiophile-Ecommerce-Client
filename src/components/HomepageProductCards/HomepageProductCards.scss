@@ -1,0 +1,93 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.product-cards {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.zx9 {
+  background-color: $primary-orange;
+  background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782922/Audiophile/home/desktop/pattern-circles_v2ul1h.svg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  padding: 3.4375rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  &__img {
+    width: 10rem;
+  }
+
+  &__title {
+    @include heading-2;
+    color: $secondary-white;
+    text-align: center;
+    margin-top: 1.5rem 0;
+  }
+
+  &__description {
+    @include body;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  &__btn {
+    @include secondary-btn;
+    background-color: $secondary-black;
+    color: $secondary-white;
+  }
+}
+
+.zx7 {
+  background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782935/Audiophile/home/mobile/image-speaker-zx7_m5bedh.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 20rem;
+  padding-left: 1rem;
+
+  &__title {
+    @include heading-4;
+    margin-bottom: 2rem;
+  }
+
+  &__btn {
+    @include secondary-btn;
+  }
+}
+
+.yx1 {
+  background-color: $primary-grey;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5625rem 0;
+  padding-left: 1rem;
+
+  &__title {
+    @include heading-4;
+    margin-bottom: 2rem;
+  }
+
+  &__btn {
+    @include secondary-btn;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+  }
+}

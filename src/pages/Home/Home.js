@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Home.scss";
-import NavBar from "../../components/NavBar/NavBar";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
+import HomepageProductCards from "../../components/HomepageProductCards/HomepageProductCards";
+import InfoSection from "../../components/InfoSection/InfoSection";
 
 // const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -39,6 +40,8 @@ export default function Home() {
         </div>
       </header>
       <CategorySelector />
+      <HomepageProductCards />
+      <InfoSection />
     </main>
   );
 }

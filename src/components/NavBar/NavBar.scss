@@ -7,7 +7,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 1.5rem;
-  background-color: $primary-black;
+  width: -webkit-fill-available;
+  position: absolute;
 }
 
 .menu-icon {

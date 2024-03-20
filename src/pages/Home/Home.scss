@@ -7,10 +7,12 @@
   background-position: center;
   background-size: cover;
   height: 85vh;
+  display: flex;
+  align-items: center;
 
   &__body {
     text-align: center;
-    padding-top: 7rem;
+    margin-top: 5rem;
   }
 
   &__overline {
