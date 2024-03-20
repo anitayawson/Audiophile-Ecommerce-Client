@@ -7,7 +7,7 @@ export default function NavBar() {
   return (
     <nav className="nav">
       <img className="menu-icon" src={menuIcon} alt="menu" />
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="audiophile logo" />
       <img className="cart-icon" src={cart} alt="cart" />
     </nav>
   );

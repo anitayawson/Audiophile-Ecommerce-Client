@@ -28,7 +28,6 @@ export default function Home() {
   return (
     <main>
       <header className="header">
-        <NavBar />
         <div className="header__body">
           <p className="header__overline">New Product</p>
           <h2 className="header__title">{newProduct.name}</h2>

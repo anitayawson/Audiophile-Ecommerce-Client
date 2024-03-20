@@ -1,0 +1,31 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $primary-black;
+  padding: 0 1.5rem 2.375rem;
+  text-align: center;
+
+  &__logo {
+  }
+
+  &__body-text {
+    @include body;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &__copyright {
+    font-weight: 700;
+    margin-top: 3rem;
+  }
+
+  &__social-icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+}
