@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Home.scss";
 import NavBar from "../../components/NavBar/NavBar";
+import CategorySelector from "../../components/CategorySelector/CategorySelector";
 
 // const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export default function Home() {
   const [newProduct, setNewProduct] = useState({});
-  const [categories, setCategories] = useState([]);
 
   const fetchNewProduct = async () => {
     try {
@@ -25,20 +25,6 @@ export default function Home() {
     fetchNewProduct();
   }, []);
 
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/api/categories");
-      setCategories(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   return (
     <main>
       <header className="header">
@@ -53,15 +39,7 @@ export default function Home() {
           <button className="header__btn">See Product</button>
         </div>
       </header>
-      <section>
-        <section className="category-list">
-          {categories.map((category) => (
-            <div key={category.id}>
-              <p>{category.name}</p>
-            </div>
-          ))}
-        </section>
-      </section>
+      <CategorySelector />
     </main>
   );
 }

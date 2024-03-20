@@ -1,0 +1,45 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.category-section {
+  padding: 5.75rem 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.category {
+  &__card {
+    background-color: $primary-grey;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+    padding-bottom: 1.375rem;
+  }
+
+  &__img {
+    width: 9rem;
+    margin-top: -2.75rem;
+  }
+
+  &__name {
+    @include heading-6;
+    font-size: 0.9375rem;
+  }
+
+  &__btn {
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  &__btn-text {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #7f7f7f;
+  }
+}
