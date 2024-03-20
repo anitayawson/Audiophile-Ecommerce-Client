@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./Footer.scss";
 import logo from "../../assets/icons/logo.svg";
 import facebookIcon from "../../assets/icons/icon-facebook.svg";
@@ -5,12 +7,35 @@ import twitterIcon from "../../assets/icons/icon-twitter.svg";
 import instagramIcon from "../../assets/icons/icon-instagram.svg";
 
 export default function Footer() {
+  const [categories, setCategories] = useState([]);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/api/categories");
+      setCategories(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   return (
     <footer className="footer">
-      <img src={logo} alt="audiophile logo" className="footer__logo" />
-      <ul>
-        <li>Home</li>
-        <li>Headphones</li>
+      <hr className="footer__styled-border" />
+      <div className="footer__logo-container">
+        <img src={logo} alt="audiophile logo" className="footer__logo" />
+      </div>
+      <ul className="footer__menu">
+        <li className="footer__item">Home</li>
+        {categories.map((category) => (
+          <li key={category.id} className="footer__item">
+            {category.name}
+          </li>
+        ))}
       </ul>
       <div className="footer__body-text">
         <p>
