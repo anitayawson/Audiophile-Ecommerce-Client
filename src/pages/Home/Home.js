@@ -2,6 +2,8 @@ import "./Home.scss";
 import NavBar from "../../components/NavBar/NavBar";
 
 export default function Home() {
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
+
   return (
     <header className="header">
       <NavBar />
