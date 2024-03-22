@@ -31,7 +31,7 @@ export default function Home() {
       <header className="header">
         <div className="header__body">
           <p className="header__overline">New Product</p>
-          <h2 className="header__title">{newProduct.name}</h2>
+          <h1 className="header__title">{newProduct.name}</h1>
           <p className="header__description">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.

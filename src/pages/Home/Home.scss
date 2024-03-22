@@ -2,13 +2,18 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  background-image: url("../../assets/images/header-img-mobile.jpg");
+  background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782932/Audiophile/home/mobile/image-header_agipob.jpg");
   background-color: $primary-black;
   background-position: center;
   background-size: cover;
   height: 85vh;
   display: flex;
   align-items: center;
+
+  @include tablet {
+    background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782903/Audiophile/home/tablet/image-header_nlchll.jpg");
+    height: 95vh;
+  }
 
   &__body {
     text-align: center;
@@ -26,12 +31,20 @@
     @include heading-2;
     color: $secondary-white;
     margin-bottom: 1.5rem;
+
+    @include tablet {
+      @include heading-1;
+    }
   }
 
   &__description {
     @include body;
     color: rgba(255, 255, 255, 0.7);
     margin: 1.5rem 2rem;
+
+    @include tablet {
+      padding: 0 11rem;
+    }
   }
 
   &__btn {

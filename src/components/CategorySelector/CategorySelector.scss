@@ -5,6 +5,12 @@
   padding: 5.25rem 1.5rem 0;
   display: flex;
   flex-direction: column;
+
+  @include tablet {
+    padding: 7rem 2.5rem 0;
+    flex-direction: row;
+    gap: 0.625rem;
+  }
 }
 
 .category {
@@ -16,6 +22,10 @@
     align-items: center;
     margin-bottom: 4rem;
     padding-bottom: 1.375rem;
+
+    @include tablet {
+      flex: 1;
+    }
   }
 
   &__img {

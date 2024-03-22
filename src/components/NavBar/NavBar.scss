@@ -9,6 +9,11 @@
   padding: 2rem 1.5rem;
   width: -webkit-fill-available;
   position: absolute;
+
+  @include tablet {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }
 
 .menu-icon {

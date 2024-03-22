@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  @include tablet {
+    padding: 2rem 2.5rem;
+  }
 }
 
 .zx9 {
@@ -20,6 +24,11 @@
   align-items: center;
   gap: 1.75rem;
 
+  @include tablet {
+    padding: 3.4375rem 10rem;
+    gap: 2.5rem;
+  }
+
   &__img {
     width: 10rem;
   }
@@ -30,6 +39,10 @@
     text-align: center;
     width: 70%;
     justify-self: center;
+
+    @include tablet {
+      @include heading-1;
+    }
   }
 
   &__description {
@@ -57,6 +70,11 @@
   align-items: flex-start;
   height: 20rem;
   padding-left: 1rem;
+
+  @include tablet {
+    background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782906/Audiophile/home/tablet/image-speaker-zx7_inx4da.jpg");
+    padding-left: 3.875rem;
+  }
 
   &__title {
     @include heading-4;
@@ -90,5 +108,21 @@
   &__img {
     width: 100%;
     border-radius: 8px;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+}
+
+.yx1__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+
+  @include tablet {
+    flex-direction: row;
+    gap: 0.625rem;
   }
 }

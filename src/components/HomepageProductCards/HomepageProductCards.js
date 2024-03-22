@@ -58,17 +58,20 @@ export default function HomepageProductCards() {
         <button className="zx7__btn">See Product</button>
       </article>
 
-      <img
-        className="yx1__img"
-        src="https://res.cloudinary.com/duepohol4/image/upload/v1710782929/Audiophile/home/mobile/image-earphones-yx1_as5ch4.jpg"
-        alt="yx1 earphones"
-      />
-
-      {/* YX1 Earphones Card */}
-      <article className="yx1">
-        <h4 className="yx1__title">{earphones.name}</h4>
-        <button className="yx1__btn">See Product</button>
-      </article>
+      <div className="yx1__container">
+        <img
+          src="https://res.cloudinary.com/duepohol4/image/upload/v1710782900/Audiophile/home/tablet/image-earphones-yx1_hk9cqt.jpg"
+          className="yx1__img"
+          srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710782929/Audiophile/home/mobile/image-earphones-yx1_as5ch4.jpg 654w, https://res.cloudinary.com/duepohol4/image/upload/v1710782900/Audiophile/home/tablet/image-earphones-yx1_hk9cqt.jpg 678w"
+          sizes="(max-width: 767px) 654px, (min-width: 768px) 678px"
+          alt="yx1 earphones"
+        />
+        {/* YX1 Earphones Card */}
+        <article className="yx1">
+          <h4 className="yx1__title">{earphones.name}</h4>
+          <button className="yx1__btn">See Product</button>
+        </article>
+      </div>
     </section>
   );
 }
