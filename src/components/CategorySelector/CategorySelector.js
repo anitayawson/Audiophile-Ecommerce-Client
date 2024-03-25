@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./CategorySelector.scss";
@@ -11,7 +12,6 @@ export default function CategorySelector() {
     try {
       const response = await axios.get("http://localhost:8080/api/categories");
       setCategories(response.data);
-      // console.log(response.data);
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
@@ -27,10 +27,10 @@ export default function CategorySelector() {
         <article key={category.id} className="category__card">
           <img src={category.image} alt="item icon" className="category__img" />
           <p className="category__name">{category.name}</p>
-          <button className="category__btn">
+          <Link to={`/category/${category.id}`} className="category__btn">
             <span className="category__btn-text">Shop</span>
             <img src={rightArrow} alt="right arrow" />
-          </button>
+          </Link>
         </article>
       ))}
     </section>

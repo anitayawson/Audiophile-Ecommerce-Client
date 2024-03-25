@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Footer.scss";
@@ -30,11 +31,13 @@ export default function Footer() {
         <img src={logo} alt="audiophile logo" className="footer__logo" />
       </div>
       <ul className="footer__menu">
-        <li className="footer__item">Home</li>
+        <Link to="/" className="footer__item">
+          <li>Home</li>
+        </Link>
         {categories.map((category) => (
-          <li key={category.id} className="footer__item">
-            {category.name}
-          </li>
+          <Link to={`/category/${category.id}`} className="footer__item">
+            <li key={category.id}>{category.name}</li>
+          </Link>
         ))}
       </ul>
       <p className="footer__body-text">
@@ -46,9 +49,21 @@ export default function Footer() {
       <div className="footer__tablet-wrapper">
         <p className="footer__copyright">Copyright 2024. All Rights Reserved</p>
         <div className="footer__social-icons">
-          <img src={facebookIcon} alt="facebook" />
-          <img src={twitterIcon} alt="twitter" />
-          <img src={instagramIcon} alt="instagram" />
+          <img
+            className="footer__social-icon"
+            src={facebookIcon}
+            alt="facebook"
+          />
+          <img
+            className="footer__social-icon"
+            src={twitterIcon}
+            alt="twitter"
+          />
+          <img
+            className="footer__social-icon"
+            src={instagramIcon}
+            alt="instagram"
+          />
         </div>
       </div>
     </footer>
