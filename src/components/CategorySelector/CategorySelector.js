@@ -24,11 +24,18 @@ export default function CategorySelector() {
   return (
     <section className="category-section">
       {categories.map((category) => (
-        <article key={category.id} className="category__card">
-          <img src={category.image} alt="item icon" className="category__img" />
-          <p className="category__name">{category.name}</p>
-          <Link to={`/category/${category.id}`} className="category__btn">
-            <span className="category__btn-text">Shop</span>
+        <article key={category.id} className="category-selector__card">
+          <img
+            src={category.image}
+            alt="item icon"
+            className="category-selector__img"
+          />
+          <p className="category-selector__name">{category.name}</p>
+          <Link
+            to={`/category/${category.id}`}
+            className="category-selector__btn"
+          >
+            <span className="category-selector__btn-text">Shop</span>
             <img src={rightArrow} alt="right arrow" />
           </Link>
         </article>

@@ -1,0 +1,47 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.category {
+  &__name-container {
+    background-color: $secondary-black;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+  &__name {
+    @include heading-4;
+    color: $secondary-white;
+    padding-bottom: 2rem;
+  }
+
+  &__product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem 0 7.5rem;
+    padding: 0 1.5rem;
+    gap: 1.5rem;
+  }
+
+  &__product-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  &__product-name {
+    @include heading-4;
+    text-align: center;
+  }
+
+  &__product-description {
+    @include body;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__product-btn {
+    @include primary-btn;
+  }
+}

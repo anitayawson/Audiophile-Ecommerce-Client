@@ -35,8 +35,12 @@ export default function Footer() {
           <li>Home</li>
         </Link>
         {categories.map((category) => (
-          <Link to={`/category/${category.id}`} className="footer__item">
-            <li key={category.id}>{category.name}</li>
+          <Link
+            to={`/category/${category.id}`}
+            key={category.id}
+            className="footer__item"
+          >
+            <li>{category.name}</li>
           </Link>
         ))}
       </ul>

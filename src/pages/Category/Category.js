@@ -2,19 +2,31 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Category.scss";
+import CategorySelector from "../../components/CategorySelector/CategorySelector";
+import InfoSection from "../../components/InfoSection/InfoSection";
 
 export default function Category() {
   const { categoryId } = useParams();
-  const [category, setCategory] = useState({});
+  const [categoryData, setCategoryData] = useState({
+    category: {},
+    products: [],
+  });
 
   useEffect(() => {
     const fetchCategoryData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/api/categories/${categoryId}`
-        );
-        setCategory(response.data);
-        console.log(response.data);
+        const [categoryResponse, productsResponse] = await Promise.all([
+          axios.get(`http://localhost:8080/api/categories/${categoryId}`),
+          axios.get(
+            `http://localhost:8080/api/products/category/${categoryId}`
+          ),
+        ]);
+
+        setCategoryData({
+          category: categoryResponse.data,
+          products: productsResponse.data,
+        });
+        console.log(productsResponse.data);
       } catch (error) {
         console.error("Error fetching category data:", error);
       }
@@ -23,13 +35,28 @@ export default function Category() {
     fetchCategoryData();
   }, [categoryId]);
 
-  // const fetchProductsbyCategory = async () => {
-
-  // }
+  const { category, products } = categoryData;
 
   return (
-    <section>
-      <h1>{category.name}</h1>
+    <section className="category">
+      <div className="category__name-container">
+        <h1 className="category__name">{category.name}</h1>
+      </div>
+      {products.map((product) => (
+        <article className="category__product-card" key={product.id}>
+          <img
+            className="category__product-img"
+            src={product.preview_images.mobile}
+            alt={product.name}
+          />
+          <h2 className="category__product-name">{product.name}</h2>
+          <p className="category__product-description">{product.description}</p>
+          <button className="category__product-btn">See Product</button>
+        </article>
+      ))}
+
+      <CategorySelector />
+      <InfoSection />
     </section>
   );
 }
