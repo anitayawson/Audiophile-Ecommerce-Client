@@ -4,6 +4,10 @@
 .info-section {
   padding: 4rem 1.5rem;
 
+  @include tablet {
+    padding: 4rem 2.5rem;
+  }
+
   &__img {
     width: 100%;
     border-radius: 8px;
@@ -13,12 +17,23 @@
     @include heading-4;
     text-align: center;
     margin: 2rem 0;
+
+    @include tablet {
+      @include heading-2;
+      @include tablet {
+        margin: 3rem 2rem 0;
+      }
+    }
   }
 
   &__description {
     @include body;
     text-align: center;
     color: rgba(0, 0, 0, 0.5);
+
+    @include tablet {
+      margin: 2rem 2rem;
+    }
   }
 }
 

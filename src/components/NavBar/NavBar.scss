@@ -10,6 +10,13 @@
   width: -webkit-fill-available;
   position: absolute;
 
+  &__logo {
+    @include tablet {
+      margin-right: auto;
+      margin-left: 2.75rem;
+    }
+  }
+
   @include tablet {
     padding-left: 2.5rem;
     padding-right: 2.5rem;

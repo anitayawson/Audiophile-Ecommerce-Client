@@ -5,7 +5,10 @@ export default function InfoSection() {
     <section className="info-section">
       <img
         className="info-section__img"
-        src="https://res.cloudinary.com/duepohol4/image/upload/v1710783241/Audiophile/shared/mobile/image-best-gear_kkac1u.jpg"
+        src="https://res.cloudinary.com/duepohol4/image/upload/v1710783226/Audiophile/shared/tablet/image-best-gear_pwrjfq.jpg"
+        srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710783241/Audiophile/shared/mobile/image-best-gear_kkac1u.jpg 654w, https://res.cloudinary.com/duepohol4/image/upload/v1710783226/Audiophile/shared/tablet/image-best-gear_pwrjfq.jpg 1378w"
+        sizes="(max-width: 767px) 654px,
+        1378px"
         alt="man wearing headphones"
       />
       <h4 className="info-section__title">
