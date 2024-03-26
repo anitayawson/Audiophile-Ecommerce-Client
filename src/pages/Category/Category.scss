@@ -7,7 +7,7 @@
     height: 12rem;
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
   }
   &__name {
     @include heading-4;

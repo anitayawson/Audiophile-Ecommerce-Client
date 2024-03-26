@@ -13,3 +13,10 @@ button {
 .nav-container {
   position: relative;
 }
+
+.menu {
+  position: absolute;
+  top: 5.625rem;
+  width: 100%;
+  background-color: $secondary-white;
+}

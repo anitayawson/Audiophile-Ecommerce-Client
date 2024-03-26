@@ -5,7 +5,7 @@ import "./CategorySelector.scss";
 
 import rightArrow from "../../assets/icons/icon-arrow-right.svg";
 
-export default function CategorySelector() {
+export default function CategorySelector({ onCloseMenu }) {
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
@@ -21,6 +21,10 @@ export default function CategorySelector() {
     fetchCategories();
   }, []);
 
+  const handleButtonClick = () => {
+    onCloseMenu();
+  };
+
   return (
     <section className="category-section">
       {categories.map((category) => (
@@ -34,6 +38,7 @@ export default function CategorySelector() {
           <Link
             to={`/category/${category.id}`}
             className="category-selector__btn"
+            onClick={handleButtonClick}
           >
             <span className="category-selector__btn-text">Shop</span>
             <img src={rightArrow} alt="right arrow" />
