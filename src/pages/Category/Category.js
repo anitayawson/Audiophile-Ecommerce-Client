@@ -37,6 +37,10 @@ export default function Category() {
 
   const { category, products } = categoryData;
 
+  const handleItemClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <section className="category">
       <div className="category__name-container">
@@ -54,6 +58,7 @@ export default function Category() {
           <Link
             to={`/product/${product.slug}`}
             className="category__product-btn"
+            onClick={handleItemClick}
           >
             See Product
           </Link>

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ProductDetails.scss";
 import QuantitySelector from "../../components/QuantitySelector/QuantitySelector";
+import CategorySelector from "../../components/CategorySelector/CategorySelector";
+import InfoSection from "../../components/InfoSection/InfoSection";
 
 export default function ProductDetails() {
   const { slug } = useParams();
@@ -83,6 +85,8 @@ export default function ProductDetails() {
           ))}
         </ul>
       </div>
+      <CategorySelector />
+      <InfoSection />
     </section>
   );
 }

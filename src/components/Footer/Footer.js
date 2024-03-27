@@ -24,6 +24,10 @@ export default function Footer() {
     fetchCategories();
   }, []);
 
+  const handleItemClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="footer">
       <hr className="footer__styled-border" />
@@ -32,7 +36,7 @@ export default function Footer() {
       </div>
       <ul className="footer__menu">
         <Link to="/" className="footer__item">
-          <li>Home</li>
+          <li onClick={handleItemClick}>Home</li>
         </Link>
         {categories.map((category) => (
           <Link
@@ -40,7 +44,7 @@ export default function Footer() {
             key={category.id}
             className="footer__item"
           >
-            <li>{category.name}</li>
+            <li onClick={handleItemClick}>{category.name}</li>
           </Link>
         ))}
       </ul>
