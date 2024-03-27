@@ -43,5 +43,6 @@
 
   &__product-btn {
     @include primary-btn;
+    text-decoration: none;
   }
 }

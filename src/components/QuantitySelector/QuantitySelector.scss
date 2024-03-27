@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.quantity-selector {
+  background-color: $primary-grey;
+  display: flex;
+  align-items: center;
+  padding: 0 0.9375rem;
+}
+
+.quantity-display {
+  padding: 0 1.3125rem;
+  color: $secondary-black;
+  font-weight: 700;
+  font-size: 0.8125rem;
+}
+
+.quantity-btn {
+  color: rgba(0, 0, 0, 0.4);
+  border: none;
+  font-weight: 700;
+}

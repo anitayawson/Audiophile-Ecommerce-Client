@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Category.scss";
@@ -51,7 +51,12 @@ export default function Category() {
           />
           <h2 className="category__product-name">{product.name}</h2>
           <p className="category__product-description">{product.description}</p>
-          <button className="category__product-btn">See Product</button>
+          <Link
+            to={`/product/${product.slug}`}
+            className="category__product-btn"
+          >
+            See Product
+          </Link>
         </article>
       ))}
 
