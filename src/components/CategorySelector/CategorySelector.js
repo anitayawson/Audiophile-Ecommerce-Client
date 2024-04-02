@@ -21,10 +21,6 @@ export default function CategorySelector({ onCloseMenu }) {
     fetchCategories();
   }, []);
 
-  const handleButtonClick = () => {
-    onCloseMenu();
-  };
-
   return (
     <section className="category-section">
       {categories.map((category) => (
@@ -38,7 +34,7 @@ export default function CategorySelector({ onCloseMenu }) {
           <Link
             to={`/category/${category.id}`}
             className="category-selector__btn"
-            onClick={handleButtonClick}
+            onClick={onCloseMenu}
           >
             <span className="category-selector__btn-text">Shop</span>
             <img src={rightArrow} alt="right arrow" />

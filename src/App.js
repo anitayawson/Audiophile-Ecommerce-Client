@@ -16,7 +16,9 @@ function App() {
   };
 
   const closeMenu = () => {
-    setShowMenu(false);
+    if (showMenu) {
+      setShowMenu(false);
+    }
   };
 
   return (
@@ -30,7 +32,7 @@ function App() {
         </section>
       )}
 
-      <main>
+      <main onClick={closeMenu}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/category/:categoryId" element={<Category />} />
