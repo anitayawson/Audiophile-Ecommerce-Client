@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../envVariables";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Home.scss";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
@@ -35,7 +36,9 @@ export default function Home() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <button className="header__btn">See Product</button>
+          <Link to={`/product/${newProduct.slug}`} className="header__btn">
+            See Product
+          </Link>
         </div>
       </header>
       <CategorySelector />

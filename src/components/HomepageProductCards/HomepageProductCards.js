@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../envVariables";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./HomepageProductCards.scss";
 
@@ -46,13 +47,17 @@ export default function HomepageProductCards() {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <button className="zx9__btn">See Product</button>
+        <Link to={`/product/${zx9Speaker?.slug}`} className="zx9__btn">
+          See Product
+        </Link>
       </article>
 
       {/* ZX7 Speaker Card */}
       <article className="zx7">
         <h4 className="zx7__title">{zx7Speaker?.name}</h4>
-        <button className="zx7__btn">See Product</button>
+        <Link to={`/product/${zx7Speaker?.slug}`} className="zx7__btn">
+          See Product
+        </Link>
       </article>
 
       <div className="yx1__container">
@@ -66,7 +71,9 @@ export default function HomepageProductCards() {
         {/* YX1 Earphones Card */}
         <article className="yx1">
           <h4 className="yx1__title">{earphones?.name}</h4>
-          <button className="yx1__btn">See Product</button>
+          <Link to={`/product/${earphones?.slug}`} className="yx1__btn">
+            See Product
+          </Link>
         </article>
       </div>
     </section>
