@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../envVariables";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ProductDetails.scss";
@@ -18,7 +19,7 @@ export default function ProductDetails() {
       try {
         // Fetch product details
         const productResponse = await axios.get(
-          `http://localhost:8080/api/products/slug/${slug}`
+          `${BASE_URL}/api/products/slug/${slug}`
         );
         setProduct(productResponse.data);
         console.log(productResponse.data);
@@ -27,13 +28,13 @@ export default function ProductDetails() {
 
         // Fetch box content
         const boxContentResponse = await axios.get(
-          `http://localhost:8080/api/box_content/product/${productId}`
+          `${BASE_URL}/api/box_content/product/${productId}`
         );
         setBoxContent(boxContentResponse.data);
 
         // Fetch gallery images
         const galleryImagesResponse = await axios.get(
-          `http://localhost:8080/api/gallery/product/${productId}`
+          `${BASE_URL}/api/gallery/product/${productId}`
         );
         setGalleryImages(galleryImagesResponse.data);
       } catch (error) {

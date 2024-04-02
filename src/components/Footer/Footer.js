@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../envVariables";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Footer.scss";
@@ -12,7 +13,7 @@ export default function Footer() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/categories");
+      const response = await axios.get(`${BASE_URL}/api/categories`);
       setCategories(response.data);
     } catch (error) {
       console.error("Error fetching categories:", error);

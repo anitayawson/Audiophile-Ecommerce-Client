@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../../envVariables";
 import axios from "axios";
 import "./Home.scss";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 import HomepageProductCards from "../../components/HomepageProductCards/HomepageProductCards";
 import InfoSection from "../../components/InfoSection/InfoSection";
-
-// const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export default function Home() {
   const [newProduct, setNewProduct] = useState({});
@@ -13,7 +12,7 @@ export default function Home() {
   const fetchNewProduct = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/products/category/1?isNew=1"
+        `${BASE_URL}/api/products/category/1?isNew=1`
       );
       setNewProduct(response.data[0]);
       // console.log(response.data[0]);

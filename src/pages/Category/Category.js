@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import { BASE_URL } from "../../envVariables";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Category.scss";
@@ -16,10 +17,8 @@ export default function Category() {
     const fetchCategoryData = async () => {
       try {
         const [categoryResponse, productsResponse] = await Promise.all([
-          axios.get(`http://localhost:8080/api/categories/${categoryId}`),
-          axios.get(
-            `http://localhost:8080/api/products/category/${categoryId}`
-          ),
+          axios.get(`${BASE_URL}/api/categories/${categoryId}`),
+          axios.get(`${BASE_URL}/api/products/category/${categoryId}`),
         ]);
 
         setCategoryData({
