@@ -129,5 +129,18 @@
 
 // Form Elements
 @mixin input-field {
-  padding-left: 1.125rem 1.5rem;
+  padding: 1.125rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+@mixin label {
+  display: block;
+  color: $secondary-black;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5625rem;
 }

@@ -7,6 +7,7 @@ import Category from "./pages/Category/Category";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CategorySelector from "./components/CategorySelector/CategorySelector";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -37,6 +38,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/category/:categoryId" element={<Category />} />
           <Route path="/product/:slug" element={<ProductDetails />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
       <Footer />
