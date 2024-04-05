@@ -40,18 +40,23 @@ export default function Category() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const sortedProducts = [...products].sort((a, b) => b.isNew - a.isNew);
+
   return (
     <section className="category">
       <div className="category__name-container">
         <h1 className="category__name">{category.name}</h1>
       </div>
-      {products.map((product) => (
+      {sortedProducts.map((product) => (
         <article className="category__product-card" key={product.id}>
           <img
             className="category__product-img"
             src={product.preview_images.mobile}
             alt={product.name}
           />
+          {product.isNew === 1 && (
+            <p className="category__new-product">New Product</p>
+          )}
           <h2 className="category__product-name">{product.name}</h2>
           <p className="category__product-description">{product.description}</p>
           <Link
