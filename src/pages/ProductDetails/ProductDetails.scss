@@ -20,6 +20,11 @@
     margin: 1.5rem 0 2rem;
   }
 
+  &__new-product {
+    @include overline;
+    margin-bottom: 1rem;
+  }
+
   &__name {
     @include heading-4;
   }

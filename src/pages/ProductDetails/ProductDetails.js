@@ -62,6 +62,9 @@ export default function ProductDetails() {
             src={product?.images?.mobile}
             alt={product.name}
           />
+          {product.isNew === 1 && (
+            <p className="product__new-product">New Product</p>
+          )}
           <h2 className="product__name">{product.name}</h2>
           <p className="product__description">{product.description}</p>
           <h6 className="product__price">$ {product.price}</h6>
