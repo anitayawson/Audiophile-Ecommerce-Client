@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
@@ -12,6 +12,7 @@ import { Modal } from "@mui/material";
 import CartModal from "./components/CartModal/CartModal";
 
 function App() {
+  const cartModalRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -56,8 +57,13 @@ function App() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
           className="cart-modal-container"
+          sx={{
+            "& .MuiBackdrop-root": {
+              top: "5rem",
+            },
+          }}
         >
-          <CartModal />
+          <CartModal ref={cartModalRef} />
         </Modal>
       </main>
       <Footer />
