@@ -1,0 +1,82 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.summary {
+  background-color: $secondary-white;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  padding: 2rem 1.5rem 2rem;
+
+  &__title {
+    @include heading-6;
+    margin-bottom: 2rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__item-img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 8px;
+    margin-right: 1rem;
+  }
+
+  &__item-details {
+    align-self: center;
+  }
+
+  &__item-name {
+    @include body;
+    font-weight: 700;
+  }
+
+  &__item-price {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+  }
+
+  &__quantity {
+    margin-left: auto;
+    align-self: center;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+
+  &__total {
+    margin: 2rem 0;
+  }
+
+  &__total-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  &__total-item:last-child {
+    margin-top: 1.75rem;
+  }
+
+  &__total-item:last-child p:last-child {
+    color: $primary-orange;
+  }
+
+  &__total-label {
+    @include body;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__total-price {
+    @include heading-6;
+  }
+
+  &__btn {
+    @include primary-btn;
+    width: 100%;
+  }
+}
