@@ -1,13 +1,27 @@
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Checkout.scss";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import OrderSummary from "../../components/OrderSummary/OrderSummary";
+import { Modal } from "@mui/material";
+import OrderConfirmationModal from "../../components/OrderConfirmationModal/OrderConfirmationModal";
 
 export default function Checkout() {
+  const checkoutModalRef = useRef(null);
   const navigate = useNavigate();
+
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
   const navigateBack = () => {
     navigate(-1);
+  };
+
+  const handleCheckout = () => {
+    setShowCheckoutModal(true);
+  };
+
+  const handleCloseCheckoutModal = () => {
+    setShowCheckoutModal(false);
   };
 
   return (
@@ -18,8 +32,17 @@ export default function Checkout() {
           Go Back
         </p>
         <CheckoutForm />
-        <OrderSummary />
+        <OrderSummary handleCheckout={handleCheckout} />
       </div>
+      <Modal
+        open={showCheckoutModal}
+        onClose={handleCloseCheckoutModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="confirmation-modal-container"
+      >
+        <OrderConfirmationModal ref={checkoutModalRef} />
+      </Modal>
     </section>
   );
 }

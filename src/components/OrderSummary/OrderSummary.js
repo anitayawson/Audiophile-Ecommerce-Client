@@ -1,6 +1,6 @@
 import "./OrderSummary.scss";
 
-export default function OrderSummary() {
+export default function OrderSummary({ handleCheckout }) {
   return (
     <section className="summary">
       <h6 className="summary__title">Summary</h6>
@@ -35,7 +35,9 @@ export default function OrderSummary() {
           <p className="summary__total-price">$ 5,446</p>
         </div>
       </article>
-      <button className="summary__btn">Continue & Pay</button>
+      <button onClick={handleCheckout} className="summary__btn">
+        Continue & Pay
+      </button>
     </section>
   );
 }
