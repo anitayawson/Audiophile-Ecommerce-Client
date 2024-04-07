@@ -49,6 +49,19 @@ export default function ProductDetails() {
     navigate(-1);
   };
 
+  const addToCart = () => {
+    const newItem = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product?.images?.mobile,
+    };
+    const existingCartItems =
+      JSON.parse(localStorage.getItem("cartItems")) || [];
+    const updatedCartItems = [...existingCartItems, newItem];
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  };
+
   return (
     <section>
       <div className="nav-bg"></div>
@@ -70,7 +83,9 @@ export default function ProductDetails() {
           <h6 className="product__price">$ {product.price}</h6>
           <div className="product__cta">
             <QuantitySelector />
-            <button className="product__btn">Add to Cart</button>
+            <button className="product__btn" onClick={addToCart}>
+              Add to Cart
+            </button>
           </div>
         </article>
 
