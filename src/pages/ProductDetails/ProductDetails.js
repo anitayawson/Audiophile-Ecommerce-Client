@@ -13,6 +13,7 @@ export default function ProductDetails() {
   const [product, setProduct] = useState({});
   const [boxContent, setBoxContent] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -55,6 +56,7 @@ export default function ProductDetails() {
       name: product.name,
       price: product.price,
       image: product?.images?.mobile,
+      quantity: quantity,
     };
     const existingCartItems =
       JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -82,7 +84,7 @@ export default function ProductDetails() {
           <p className="product__description">{product.description}</p>
           <h6 className="product__price">$ {product.price}</h6>
           <div className="product__cta">
-            <QuantitySelector />
+            <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
             <button className="product__btn" onClick={addToCart}>
               Add to Cart
             </button>

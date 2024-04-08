@@ -1,8 +1,7 @@
-import { useState } from "react";
 import "./QuantitySelector.scss";
 
-export default function QuantitySelector() {
-  const [quantity, setQuantity] = useState(1);
+export default function QuantitySelector({ quantity, setQuantity }) {
+  // const [quantity, setQuantity] = useState(1);
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
