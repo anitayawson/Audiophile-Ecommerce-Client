@@ -54,9 +54,7 @@ const CartModal = forwardRef((props, ref) => {
       ))}
       <div className="cart__total-container">
         <p className="cart__total-text">Total</p>
-        <h6 className="cart__total-price">
-          $ {calculateTotalPrice(cartItems)}
-        </h6>
+        <h6 className="cart__total-price">$ {calculateTotalPrice()}</h6>
       </div>
       <button className="cart__checkout-btn">Checkout</button>
     </Box>
