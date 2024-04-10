@@ -6,6 +6,16 @@
   border-radius: 8px;
   padding: 2rem 1.75rem;
 
+  @include tablet {
+    width: 45%;
+    position: absolute;
+    right: 0;
+  }
+
+  @include desktop {
+    width: 28%;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;

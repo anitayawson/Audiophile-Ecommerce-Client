@@ -71,23 +71,25 @@ export default function ProductDetails() {
         <p onClick={navigateBack} className="product__back-btn">
           Go Back
         </p>
-        <article>
+        <article className="product__card">
           <img
             className="product__img"
             src={product?.images?.mobile}
             alt={product.name}
           />
-          {product.isNew === 1 && (
-            <p className="product__new-product">New Product</p>
-          )}
-          <h2 className="product__name">{product.name}</h2>
-          <p className="product__description">{product.description}</p>
-          <h6 className="product__price">$ {product.price}</h6>
-          <div className="product__cta">
-            <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
-            <button className="product__btn" onClick={addToCart}>
-              Add to Cart
-            </button>
+          <div className="product__content">
+            {product.isNew === 1 && (
+              <p className="product__new-product">New Product</p>
+            )}
+            <h2 className="product__name">{product.name}</h2>
+            <p className="product__description">{product.description}</p>
+            <h6 className="product__price">$ {product.price}</h6>
+            <div className="product__cta">
+              <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
+              <button className="product__btn" onClick={addToCart}>
+                Add to Cart
+              </button>
+            </div>
           </div>
         </article>
 
@@ -96,15 +98,17 @@ export default function ProductDetails() {
           <p className="features__description">{product.features}</p>
         </div>
 
-        <h3 className="product__subtitle">In the Box</h3>
-        <ul className="box-content">
-          {boxContent.map((content) => (
-            <li key={content.id} className="box-content__item-row">
-              <span className="box-content__qty">{content.quantity}x </span>
-              <span className="box-content__item">{content.item_name}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="content">
+          <h3 className="product__subtitle">In the Box</h3>
+          <ul className="content__list">
+            {boxContent.map((content) => (
+              <li key={content.id} className="content__item">
+                <span className="content__qty">{content.quantity}x </span>
+                <span className="content__item">{content.item_name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <CategorySelector />
       <InfoSection />

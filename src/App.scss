@@ -25,4 +25,12 @@ input {
 
 .cart-modal-container {
   margin: 7rem 1.5rem 0;
+
+  @include tablet {
+    margin-right: 2.5rem;
+  }
+
+  @include desktop {
+    margin-right: 10.3125rem;
+  }
 }

@@ -54,18 +54,22 @@ export default function Category() {
             src={product.preview_images.mobile}
             alt={product.name}
           />
-          {product.isNew === 1 && (
-            <p className="category__new-product">New Product</p>
-          )}
-          <h2 className="category__product-name">{product.name}</h2>
-          <p className="category__product-description">{product.description}</p>
-          <Link
-            to={`/product/${product.slug}`}
-            className="category__product-btn"
-            onClick={handleItemClick}
-          >
-            See Product
-          </Link>
+          <div className="category__content">
+            {product.isNew === 1 && (
+              <p className="category__new-product">New Product</p>
+            )}
+            <h2 className="category__product-name">{product.name}</h2>
+            <p className="category__product-description">
+              {product.description}
+            </p>
+            <Link
+              to={`/product/${product.slug}`}
+              className="category__product-btn"
+              onClick={handleItemClick}
+            >
+              See Product
+            </Link>
+          </div>
         </article>
       ))}
 
