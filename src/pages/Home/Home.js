@@ -7,7 +7,7 @@ import CategorySelector from "../../components/CategorySelector/CategorySelector
 import HomepageProductCards from "../../components/HomepageProductCards/HomepageProductCards";
 import InfoSection from "../../components/InfoSection/InfoSection";
 
-export default function Home() {
+export default function Home({ categories }) {
   const [newProduct, setNewProduct] = useState({});
 
   const fetchNewProduct = async () => {
@@ -41,7 +41,7 @@ export default function Home() {
           </Link>
         </div>
       </header>
-      <CategorySelector />
+      <CategorySelector categories={categories} />
       <HomepageProductCards />
       <InfoSection />
     </main>

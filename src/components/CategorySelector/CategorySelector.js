@@ -1,27 +1,9 @@
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../envVariables";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import "./CategorySelector.scss";
 
 import rightArrow from "../../assets/icons/icon-arrow-right.svg";
 
-export default function CategorySelector({ onCloseMenu }) {
-  const [categories, setCategories] = useState([]);
-
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/api/categories`);
-      setCategories(response.data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
+export default function CategorySelector({ onCloseMenu, categories = [] }) {
   return (
     <section className="category-section">
       {categories.map((category) => (

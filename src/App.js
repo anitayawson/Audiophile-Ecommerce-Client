@@ -1,5 +1,7 @@
 import "./App.scss";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { BASE_URL } from "./envVariables";
+import axios from "axios";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
@@ -15,6 +17,21 @@ function App() {
   const cartModalRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+
+  const [categories, setCategories] = useState([]);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/api/categories`);
+      setCategories(response.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -37,18 +54,30 @@ function App() {
   return (
     <BrowserRouter>
       <div className="nav-container">
-        <NavBar toggleMenu={toggleMenu} handleCartOpen={handleCartOpen} />
+        <NavBar
+          toggleMenu={toggleMenu}
+          handleCartOpen={handleCartOpen}
+          categories={categories}
+        />
       </div>
       {showMenu && (
         <section className="menu">
-          <CategorySelector onCloseMenu={closeMenu} />
+          <CategorySelector onCloseMenu={closeMenu} categories={categories} />
         </section>
       )}
       <main onClick={closeMenu}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/category/:categoryId" element={<Category />} />
-          <Route path="/product/:slug" element={<ProductDetails />} />
+          <Route path="/" element={<Home />} itemCategories={categories} />
+          <Route
+            path="/category/:categoryId"
+            element={<Category />}
+            categories={categories}
+          />
+          <Route
+            path="/product/:slug"
+            element={<ProductDetails />}
+            categories={categories}
+          />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <Modal
@@ -66,7 +95,7 @@ function App() {
           <CartModal ref={cartModalRef} />
         </Modal>
       </main>
-      <Footer />
+      <Footer categories={categories} />
     </BrowserRouter>
   );
 }

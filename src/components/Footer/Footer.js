@@ -1,28 +1,28 @@
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../envVariables";
-import { useState, useEffect } from "react";
-import axios from "axios";
+// import { BASE_URL } from "../../envVariables";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
 import "./Footer.scss";
 import logo from "../../assets/icons/logo.svg";
 import facebookIcon from "../../assets/icons/icon-facebook.svg";
 import twitterIcon from "../../assets/icons/icon-twitter.svg";
 import instagramIcon from "../../assets/icons/icon-instagram.svg";
 
-export default function Footer() {
-  const [categories, setCategories] = useState([]);
+export default function Footer({ categories }) {
+  // const [categories, setCategories] = useState([]);
 
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/api/categories`);
-      setCategories(response.data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
+  // const fetchCategories = async () => {
+  //   try {
+  //     const response = await axios.get(`${BASE_URL}/api/categories`);
+  //     setCategories(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching categories:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+  // useEffect(() => {
+  //   fetchCategories();
+  // }, []);
 
   const handleItemClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
