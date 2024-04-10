@@ -42,14 +42,16 @@ export default function HomepageProductCards() {
           src="https://res.cloudinary.com/duepohol4/image/upload/v1710782941/Audiophile/home/mobile/image-speaker-zx9_vyeo5h.png"
           alt="zx9 speaker"
         />
-        <h2 className="zx9__title">{zx9Speaker?.name}</h2>
-        <p className="zx9__description">
-          Upgrade to premium speakers that are phenomenally built to deliver
-          truly remarkable sound.
-        </p>
-        <Link to={`/product/${zx9Speaker?.slug}`} className="zx9__btn">
-          See Product
-        </Link>
+        <div className="zx9__body">
+          <h2 className="zx9__title">{zx9Speaker?.name}</h2>
+          <p className="zx9__description">
+            Upgrade to premium speakers that are phenomenally built to deliver
+            truly remarkable sound.
+          </p>
+          <Link to={`/product/${zx9Speaker?.slug}`} className="zx9__btn">
+            See Product
+          </Link>
+        </div>
       </article>
 
       {/* ZX7 Speaker Card */}
