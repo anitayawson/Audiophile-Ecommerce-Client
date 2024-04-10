@@ -72,11 +72,21 @@ export default function ProductDetails() {
           Go Back
         </p>
         <article className="product__card">
-          <img
-            className="product__img"
-            src={product?.images?.mobile}
-            alt={product.name}
-          />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet={product?.images?.mobile}
+            />
+            <source
+              media="(max-width: 1279px)"
+              srcSet={product?.images?.tablet}
+            />
+            <img
+              className="product__img"
+              src={product?.images?.desktop}
+              alt={product.name}
+            />
+          </picture>
           <div className="product__content">
             {product.isNew === 1 && (
               <p className="product__new-product">New Product</p>

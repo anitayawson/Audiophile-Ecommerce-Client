@@ -74,6 +74,10 @@
     align-items: center;
     gap: 1.5rem;
 
+    @include tablet {
+      width: 80%;
+    }
+
     @include desktop {
       align-items: flex-start;
     }
@@ -83,8 +87,11 @@
     @include heading-4;
     text-align: center;
 
-    @include desktop {
+    @include tablet {
       @include heading-2;
+    }
+
+    @include desktop {
       text-align: left;
     }
   }

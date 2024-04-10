@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .info-section {
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem 7.5rem;
 
   @include tablet {
     padding: 4rem 2.5rem;
@@ -21,7 +21,6 @@
     border-radius: 8px;
 
     @include desktop {
-      width: 50%;
       height: 36.75rem;
       object-fit: cover;
     }
@@ -64,7 +63,7 @@
     @include desktop {
       margin: 0;
       text-align: left;
-      width: 82%;
+      width: 85%;
     }
   }
 }

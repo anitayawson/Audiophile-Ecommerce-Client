@@ -37,11 +37,22 @@ export default function HomepageProductCards() {
     <section className="product-cards">
       {/* ZX9 Speaker Card */}
       <article className="zx9">
-        <img
-          className="zx9__img"
-          src="https://res.cloudinary.com/duepohol4/image/upload/v1710782941/Audiophile/home/mobile/image-speaker-zx9_vyeo5h.png"
-          alt="zx9 speaker"
-        />
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710782941/Audiophile/home/mobile/image-speaker-zx9_vyeo5h.png"
+          />
+          <source
+            media="(max-width: 1279px)"
+            srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710782909/Audiophile/home/tablet/image-speaker-zx9_y2cpdo.png"
+          />
+          <img
+            className="zx9__img"
+            src="https://res.cloudinary.com/duepohol4/image/upload/v1710782925/Audiophile/home/desktop/image-speaker-zx9_pjfxki.png"
+            alt="zx9 speaker"
+          />
+        </picture>
+
         <div className="zx9__body">
           <h2 className="zx9__title">{zx9Speaker?.name}</h2>
           <p className="zx9__description">
@@ -63,13 +74,22 @@ export default function HomepageProductCards() {
       </article>
 
       <div className="yx1__container">
-        <img
-          src="https://res.cloudinary.com/duepohol4/image/upload/v1710782900/Audiophile/home/tablet/image-earphones-yx1_hk9cqt.jpg"
-          className="yx1__img"
-          srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710782929/Audiophile/home/mobile/image-earphones-yx1_as5ch4.jpg 654w, https://res.cloudinary.com/duepohol4/image/upload/v1710782900/Audiophile/home/tablet/image-earphones-yx1_hk9cqt.jpg 678w"
-          sizes="(max-width: 767px) 654px, (min-width: 768px) 678px"
-          alt="yx1 earphones"
-        />
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710782929/Audiophile/home/mobile/image-earphones-yx1_as5ch4.jpg"
+          />
+          <source
+            media="(max-width: 1279px)"
+            srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710782900/Audiophile/home/tablet/image-earphones-yx1_hk9cqt.jpg"
+          />
+          <img
+            src="https://res.cloudinary.com/duepohol4/image/upload/v1710782913/Audiophile/home/desktop/image-earphones-yx1_vjel4p.jpg"
+            className="yx1__img"
+            alt="yx1 earphones"
+          />
+        </picture>
+
         {/* YX1 Earphones Card */}
         <article className="yx1">
           <h4 className="yx1__title">{earphones?.name}</h4>

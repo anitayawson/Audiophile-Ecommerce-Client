@@ -49,11 +49,21 @@ export default function Category() {
       </div>
       {sortedProducts.map((product) => (
         <article className="category__product-card" key={product.id}>
-          <img
-            className="category__product-img"
-            src={product.preview_images.mobile}
-            alt={product.name}
-          />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet={product.preview_images.mobile}
+            />
+            <source
+              media="(max-width: 1279px)"
+              srcSet={product.preview_images.tablet}
+            />
+            <img
+              className="category__product-img"
+              src={product.preview_images.desktop}
+              alt={product.name}
+            />
+          </picture>
           <div className="category__content">
             {product.isNew === 1 && (
               <p className="category__new-product">New Product</p>
