@@ -80,6 +80,10 @@
   &__item {
     text-decoration: none;
     color: $secondary-white;
+
+    &:hover {
+      color: $primary-orange;
+    }
   }
 
   &__body-wrapper {

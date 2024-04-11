@@ -97,6 +97,11 @@
     @include secondary-btn;
     background-color: $secondary-black;
     color: $secondary-white;
+    border: none;
+
+    &:hover {
+      background-color: #4c4c4c;
+    }
   }
 }
 
@@ -143,12 +148,11 @@
 
   @include tablet {
     padding: 0 3.125rem;
-    // padding-left: 3.125rem;
     width: 50%;
   }
 
   @include desktop {
-    width: 100%;
+    width: 50%;
   }
 
   &__title {
@@ -163,6 +167,10 @@
   &__img {
     width: 21.1875rem;
     border-radius: 8px;
+
+    @include desktop {
+      width: 100%;
+    }
   }
 }
 

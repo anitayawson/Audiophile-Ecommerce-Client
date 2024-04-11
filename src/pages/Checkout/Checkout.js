@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Checkout.scss";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
@@ -11,6 +11,14 @@ export default function Checkout() {
   const navigate = useNavigate();
 
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
 
   const navigateBack = () => {
     navigate(-1);
@@ -32,7 +40,7 @@ export default function Checkout() {
           Go Back
         </p>
         <CheckoutForm />
-        <OrderSummary handleCheckout={handleCheckout} />
+        <OrderSummary handleCheckout={handleCheckout} cartItems={cartItems} />
       </div>
       <Modal
         open={showCheckoutModal}

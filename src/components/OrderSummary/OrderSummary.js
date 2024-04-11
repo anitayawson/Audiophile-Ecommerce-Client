@@ -1,38 +1,50 @@
 import "./OrderSummary.scss";
 
-export default function OrderSummary({ handleCheckout }) {
+export default function OrderSummary({ handleCheckout, cartItems }) {
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  const shippingCost = 50;
+
+  const VAT = totalPrice * 0.2;
+
+  const grandTotal = totalPrice + shippingCost + VAT;
+
   return (
     <section className="summary">
       <h6 className="summary__title">Summary</h6>
-      <article className="summary__item">
-        <img
-          src="https://res.cloudinary.com/duepohol4/image/upload/v1710782875/Audiophile/cart/image-xx99-mark-two-headphones_fksqhm.jpg"
-          alt="prod img"
-          className="summary__item-img"
-        />
-        <div className="summary__item-details">
-          <p className="summary__item-name">Title</p>
-          <p className="summary__item-price">$ 100</p>
-        </div>
-        <p className="summary__quantity">1x</p>
-      </article>
+
+      {cartItems.map((item, index) => (
+        <article key={index} className="summary__item">
+          <img src={item.image} alt={item.name} className="summary__item-img" />
+          <div className="summary__item-details">
+            <p className="summary__item-name">{item.name}</p>
+            <p className="summary__item-price">
+              $ {item.price * item.quantity}
+            </p>
+          </div>
+          <p className="summary__quantity">{item.quantity}x</p>
+        </article>
+      ))}
 
       <article className="summary__total">
         <div className="summary__total-item">
           <p className="summary__total-label">Total</p>
-          <p className="summary__total-price">$ 5,396</p>
+          <p className="summary__total-price">$ {totalPrice}</p>
         </div>
         <div className="summary__total-item">
           <p className="summary__total-label">Shipping</p>
-          <p className="summary__total-price">$ 50</p>
+          <p className="summary__total-price">$ {shippingCost}</p>
         </div>
         <div className="summary__total-item">
           <p className="summary__total-label">VAT (Included)</p>
-          <p className="summary__total-price">$ 1,079</p>
+          <p className="summary__total-price">$ {VAT}</p>
         </div>
         <div className="summary__total-item">
           <p className="summary__total-label">Grand Total</p>
-          <p className="summary__total-price">$ 5,446</p>
+          <p className="summary__total-price">$ {grandTotal}</p>
         </div>
       </article>
       <button onClick={handleCheckout} className="summary__btn">

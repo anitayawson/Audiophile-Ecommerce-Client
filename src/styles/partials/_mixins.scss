@@ -105,6 +105,7 @@
   font-weight: 700;
   font-size: 0.8125rem;
   border: none;
+  cursor: pointer;
 
   &:hover {
     background-color: $secondary-orange;
@@ -121,6 +122,7 @@
   letter-spacing: 0.0625rem;
   font-weight: 700;
   font-size: 0.8125rem;
+  cursor: pointer;
 
   &:hover {
     background-color: $secondary-black;
