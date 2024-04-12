@@ -15,20 +15,63 @@
       margin-right: auto;
       margin-left: 2.75rem;
     }
+
+    @include desktop {
+      margin: 0;
+    }
   }
 
   @include tablet {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
+
+  @include desktop {
+    margin-left: 10.3125rem;
+    margin-right: 10.3125rem;
+    padding: 2.5rem 0;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    display: none;
+
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      font-size: 0.8125rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      display: flex;
+      gap: 2.125rem;
+    }
+  }
+
+  &__menu-item {
+    text-decoration: none;
+    color: $secondary-white;
+
+    &:hover {
+      color: $primary-orange;
+    }
+  }
 }
 
 .menu-icon {
   width: 1rem;
   height: 1rem;
+
+  @include desktop {
+    display: none;
+  }
 }
 
 .cart-icon {
   width: 1.4375rem;
   height: 1.25rem;
+  cursor: pointer;
 }

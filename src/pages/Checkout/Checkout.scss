@@ -1,0 +1,40 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.checkout {
+  padding: 1rem 1.5rem 3rem;
+  background-color: $primary-off-white;
+
+  @include tablet {
+    padding: 3rem 2.5rem 7.25rem;
+  }
+
+  @include desktop {
+    padding: 5rem 10.3125rem 8.75rem;
+    background-color: $primary-grey;
+  }
+
+  &__back-btn {
+    @include body;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover {
+      color: $primary-orange;
+    }
+  }
+
+  &__desktop-wrapper {
+    @include desktop {
+      margin-top: 2.375rem;
+      display: flex;
+      gap: 1.875rem;
+      width: 100%;
+    }
+  }
+}
+
+.confirmation-modal-container {
+  margin: 3rem 1.5rem 0;
+}

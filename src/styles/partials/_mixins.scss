@@ -74,6 +74,7 @@
   text-transform: uppercase;
   line-height: 1.1875rem;
   letter-spacing: 0.625rem;
+  color: $primary-orange;
 }
 
 @mixin subtitle {
@@ -98,11 +99,13 @@
   background-color: $primary-orange;
   color: $secondary-white;
   text-transform: uppercase;
+  text-decoration: none;
   padding: 15px 30px;
   letter-spacing: 0.0625rem;
   font-weight: 700;
   font-size: 0.8125rem;
   border: none;
+  cursor: pointer;
 
   &:hover {
     background-color: $secondary-orange;
@@ -114,10 +117,12 @@
   border: 1px solid black;
   color: $secondary-black;
   text-transform: uppercase;
+  text-decoration: none;
   padding: 15px 30px;
   letter-spacing: 0.0625rem;
   font-weight: 700;
   font-size: 0.8125rem;
+  cursor: pointer;
 
   &:hover {
     background-color: $secondary-black;
@@ -127,5 +132,18 @@
 
 // Form Elements
 @mixin input-field {
-  padding-left: 1.125rem 1.5rem;
+  padding: 1.125rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-top: 0.5625rem;
+  margin-bottom: 1.5rem;
+}
+
+@mixin label {
+  display: block;
+  color: $secondary-black;
+  font-size: 0.75rem;
+  font-weight: 700;
 }

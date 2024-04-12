@@ -2,15 +2,34 @@
 @use "../../styles/partials/mixins" as *;
 
 .info-section {
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem 7.5rem;
 
   @include tablet {
     padding: 4rem 2.5rem;
   }
 
+  @include desktop {
+    padding: 12rem 10.3125rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1.875rem;
+  }
+
   &__img {
     width: 100%;
     border-radius: 8px;
+
+    @include desktop {
+      height: 36.75rem;
+      object-fit: cover;
+    }
+  }
+
+  &__body {
+    @include desktop {
+      width: 50%;
+    }
   }
 
   &__title {
@@ -24,6 +43,12 @@
         margin: 3rem 2rem 0;
       }
     }
+
+    @include desktop {
+      margin: 0 0 2rem;
+      text-align: left;
+      width: 80%;
+    }
   }
 
   &__description {
@@ -33,6 +58,12 @@
 
     @include tablet {
       margin: 2rem 2rem;
+    }
+
+    @include desktop {
+      margin: 0;
+      text-align: left;
+      width: 85%;
     }
   }
 }

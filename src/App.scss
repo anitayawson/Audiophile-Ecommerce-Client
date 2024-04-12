@@ -3,7 +3,9 @@
 
 html,
 body,
-button {
+button,
+p,
+input {
   box-sizing: border-box;
   margin: 0;
   font-family: Manrope;
@@ -19,4 +21,16 @@ button {
   top: 5.625rem;
   width: 100%;
   background-color: $secondary-white;
+}
+
+.cart-modal-container {
+  margin: 7rem 1.5rem 0;
+
+  @include tablet {
+    margin-right: 2.5rem;
+  }
+
+  @include desktop {
+    margin-right: 10.3125rem;
+  }
 }

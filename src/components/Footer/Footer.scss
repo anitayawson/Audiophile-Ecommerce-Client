@@ -15,6 +15,10 @@
     align-items: flex-start;
   }
 
+  @include desktop {
+    padding: 0 10.3125rem 3rem;
+  }
+
   &__styled-border {
     background-color: $primary-orange;
     width: 6.3125rem;
@@ -27,8 +31,32 @@
     }
   }
 
+  &__header-container {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: 4.6875rem 0 2.25rem;
+    }
+  }
+
   &__logo-container {
     padding: 3.25rem 0;
+
+    @include tablet {
+      padding: 3.75rem 0 2rem;
+    }
+
+    @include desktop {
+      padding: 0;
+    }
   }
 
   &__menu {
@@ -52,6 +80,17 @@
   &__item {
     text-decoration: none;
     color: $secondary-white;
+
+    &:hover {
+      color: $primary-orange;
+    }
+  }
+
+  &__body-wrapper {
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__body-text {
@@ -61,6 +100,11 @@
 
     @include tablet {
       text-align: left;
+    }
+
+    @include desktop {
+      margin: 0;
+      width: 50%;
     }
   }
 
@@ -76,6 +120,20 @@
     gap: 1rem;
     justify-content: center;
     margin-top: 3rem;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__desktop-social-icons {
+    display: none;
+
+    @include desktop {
+      display: flex;
+      gap: 1rem;
+      align-self: flex-end;
+    }
   }
 
   &__social-icon {

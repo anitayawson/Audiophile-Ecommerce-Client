@@ -1,0 +1,74 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.checkout-form {
+  background-color: $secondary-white;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.5rem 2rem;
+
+  @include tablet {
+    padding: 1.875rem 1.7rem;
+  }
+
+  @include desktop {
+    width: 65%;
+    margin-top: 0;
+  }
+
+  &__label {
+    @include label;
+
+    @include tablet {
+    }
+  }
+
+  &__input {
+    @include input-field;
+    width: 100%;
+  }
+
+  &__input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+  }
+
+  &__input:focus {
+    border-color: $primary-orange;
+    outline: 1px solid $primary-orange;
+  }
+
+  &__title {
+    @include heading-4;
+
+    @include tablet {
+      @include heading-3;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__section {
+    margin-top: 2rem;
+    @include tablet {
+    }
+  }
+
+  &__subtitle {
+    @include subtitle;
+    margin-bottom: 1rem;
+  }
+
+  &__payment-method {
+    @include input-field;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__tablet-wrapper {
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+}

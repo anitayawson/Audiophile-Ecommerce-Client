@@ -10,6 +10,11 @@
   @include tablet {
     padding: 2rem 2.5rem;
   }
+
+  @include desktop {
+    padding: 2rem 10.3125rem;
+    gap: 3rem;
+  }
 }
 
 .zx9 {
@@ -23,14 +28,41 @@
   flex-direction: column;
   align-items: center;
   gap: 1.75rem;
+  overflow: hidden;
 
   @include tablet {
     padding: 3.4375rem 10rem;
-    gap: 2.5rem;
+    gap: 4rem;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    padding-left: 7rem;
+    gap: 8.6rem;
   }
 
   &__img {
     width: 10rem;
+
+    @include tablet {
+      width: 12.3125rem;
+    }
+
+    @include desktop {
+      width: 25.625rem;
+      margin-bottom: -4.5rem;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    @include desktop {
+      align-items: flex-start;
+    }
   }
 
   &__title {
@@ -43,6 +75,10 @@
     @include tablet {
       @include heading-1;
     }
+
+    @include desktop {
+      text-align: left;
+    }
   }
 
   &__description {
@@ -50,12 +86,22 @@
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
     padding: 0 1.5rem;
+
+    @include desktop {
+      text-align: left;
+      padding: 0;
+    }
   }
 
   &__btn {
     @include secondary-btn;
     background-color: $secondary-black;
     color: $secondary-white;
+    border: none;
+
+    &:hover {
+      background-color: #4c4c4c;
+    }
   }
 }
 
@@ -74,6 +120,10 @@
   @include tablet {
     background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782906/Audiophile/home/tablet/image-speaker-zx7_inx4da.jpg");
     padding-left: 3.875rem;
+  }
+
+  @include desktop {
+    background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782919/Audiophile/home/desktop/image-speaker-zx7_ujn31u.jpg");
   }
 
   &__title {
@@ -96,6 +146,15 @@
   padding: 2.5625rem 0;
   padding-left: 1rem;
 
+  @include tablet {
+    padding: 0 3.125rem;
+    width: 50%;
+  }
+
+  @include desktop {
+    width: 50%;
+  }
+
   &__title {
     @include heading-4;
     margin-bottom: 2rem;
@@ -106,11 +165,11 @@
   }
 
   &__img {
-    width: 100%;
+    width: 21.1875rem;
     border-radius: 8px;
 
-    @include tablet {
-      width: 50%;
+    @include desktop {
+      width: 100%;
     }
   }
 }
@@ -119,10 +178,19 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 100%;
 
   @include tablet {
     flex-direction: row;
     gap: 0.625rem;
+  }
+
+  @include desktop {
+    gap: 1.875rem;
+  }
+}
+
+.yx1__container picture {
+  @include tablet {
+    width: 50%;
   }
 }

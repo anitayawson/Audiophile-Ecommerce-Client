@@ -1,0 +1,80 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.cart {
+  background-color: $secondary-white;
+  border-radius: 8px;
+  padding: 2rem 1.75rem;
+
+  @include tablet {
+    width: 45%;
+    position: absolute;
+    right: 0;
+  }
+
+  @include desktop {
+    width: 28%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    @include heading-6;
+  }
+
+  &__remove-btn {
+    @include body;
+    text-decoration: underline;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__item-img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 8px;
+  }
+
+  &__item-name {
+    @include body;
+    font-weight: 700;
+  }
+
+  &__item-price {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+  }
+
+  &__total-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0 1.5rem;
+  }
+
+  &__total-text {
+    @include body;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+  }
+
+  &__total-price {
+    @include heading-6;
+  }
+
+  &__checkout-btn {
+    @include primary-btn;
+  }
+}
