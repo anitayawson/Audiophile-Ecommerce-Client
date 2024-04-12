@@ -39,8 +39,10 @@ export default function Checkout() {
         <p onClick={navigateBack} className="checkout__back-btn">
           Go Back
         </p>
-        <CheckoutForm />
-        <OrderSummary handleCheckout={handleCheckout} cartItems={cartItems} />
+        <div className="checkout__desktop-wrapper">
+          <CheckoutForm />
+          <OrderSummary handleCheckout={handleCheckout} cartItems={cartItems} />
+        </div>
       </div>
       <Modal
         open={showCheckoutModal}

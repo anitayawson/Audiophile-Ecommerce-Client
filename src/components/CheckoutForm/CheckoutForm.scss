@@ -11,6 +11,11 @@
     padding: 1.875rem 1.7rem;
   }
 
+  @include desktop {
+    width: 65%;
+    margin-top: 0;
+  }
+
   &__label {
     @include label;
 

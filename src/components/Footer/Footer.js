@@ -15,7 +15,9 @@ export default function Footer({ categories }) {
       <hr className="footer__styled-border" />
       <div className="footer__header-container">
         <div className="footer__logo-container">
-          <img src={logo} alt="audiophile logo" className="footer__logo" />
+          <Link to="/" className="footer__logo">
+            <img onClick={handleItemClick} src={logo} alt="audiophile logo" />
+          </Link>
         </div>
         <ul className="footer__menu">
           <Link to="/" className="footer__item">
