@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useState } from "react";
 import { Box } from "@mui/material";
+import { formatNumber } from "../../utils";
 import "./CartModal.scss";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 
@@ -42,7 +43,7 @@ const CartModal = forwardRef((props, ref) => {
           <img src={item.image} alt={item.name} className="cart__item-img" />
           <div>
             <p className="cart__item-name">{item.name}</p>
-            <p className="cart__item-price">$ {item.price}</p>
+            <p className="cart__item-price">$ {formatNumber(item.price)}</p>
           </div>
           <QuantitySelector
             quantity={item.quantity}

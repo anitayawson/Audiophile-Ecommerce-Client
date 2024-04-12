@@ -3,6 +3,7 @@ import { BASE_URL } from "../../envVariables";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ProductDetails.scss";
+import { formatNumber } from "../../utils";
 import QuantitySelector from "../../components/QuantitySelector/QuantitySelector";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 import InfoSection from "../../components/InfoSection/InfoSection";
@@ -93,7 +94,7 @@ export default function ProductDetails() {
             )}
             <h2 className="product__name">{product.name}</h2>
             <p className="product__description">{product.description}</p>
-            <h6 className="product__price">$ {product.price}</h6>
+            <h6 className="product__price">$ {formatNumber(product.price)}</h6>
             <div className="product__cta">
               <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
               <button className="product__btn" onClick={addToCart}>
