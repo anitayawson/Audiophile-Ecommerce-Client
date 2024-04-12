@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { formatNumber } from "../../utils";
 import "./CartModal.scss";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
+import { Link } from "react-router-dom";
 
 const CartModal = forwardRef((props, ref) => {
   const [cartItems, setCartItems] = useState([]);
@@ -57,7 +58,9 @@ const CartModal = forwardRef((props, ref) => {
         <p className="cart__total-text">Total</p>
         <h6 className="cart__total-price">$ {calculateTotalPrice()}</h6>
       </div>
-      <button className="cart__checkout-btn">Checkout</button>
+      <Link to="/checkout" className="cart__checkout-btn">
+        Checkout
+      </Link>
     </Box>
   );
 });

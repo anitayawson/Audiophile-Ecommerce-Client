@@ -5,6 +5,10 @@
   padding: 1rem 1.5rem 3rem;
   background-color: $primary-off-white;
 
+  @include tablet {
+    padding: 3rem 2.5rem 7.25rem;
+  }
+
   &__back-btn {
     @include body;
     color: rgba(0, 0, 0, 0.5);
