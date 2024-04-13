@@ -3,7 +3,11 @@
 
 .nav-bg {
   background-color: $secondary-black;
-  height: 5.625rem;
+  height: 6rem;
+
+  @include desktop {
+    height: 7rem;
+  }
 }
 
 .product {
@@ -20,6 +24,8 @@
   &__back-btn {
     @include body;
     color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: inline-block;
 
     @include tablet {
       margin-bottom: 1rem;
@@ -27,6 +33,9 @@
 
     @include desktop {
       margin-bottom: 3.5rem;
+      &:hover {
+        color: $primary-orange;
+      }
     }
   }
 
@@ -62,6 +71,7 @@
     @include body;
     color: rgba(0, 0, 0, 0.5);
     margin: 24px 0;
+    white-space: pre-line;
   }
 
   &__price {
@@ -115,5 +125,27 @@
     font-size: 0.9375rem;
     font-weight: 700;
     margin-right: 1.5rem;
+  }
+}
+
+.gallery {
+  margin: 5.5rem 0;
+
+  @include tablet {
+    display: flex;
+    gap: 1.125rem;
+  }
+
+  &__column-container {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
   }
 }

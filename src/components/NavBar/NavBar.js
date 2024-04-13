@@ -1,7 +1,7 @@
 import "./NavBar.scss";
 import menuIcon from "../../assets/icons/icon-hamburger.svg";
 import logo from "../../assets/icons/logo.svg";
-import cart from "../../assets/icons/icon-cart.svg";
+import { ReactComponent as CartIcon } from "../../assets/icons/icon-cart.svg";
 import { Link } from "react-router-dom";
 
 export default function NavBar({ toggleMenu, handleCartOpen, categories }) {
@@ -30,12 +30,7 @@ export default function NavBar({ toggleMenu, handleCartOpen, categories }) {
           </Link>
         ))}
       </ul>
-      <img
-        onClick={handleCartOpen}
-        className="cart-icon"
-        src={cart}
-        alt="cart"
-      />
+      <CartIcon fill="white" onClick={handleCartOpen} className="cart-icon" />
     </nav>
   );
 }

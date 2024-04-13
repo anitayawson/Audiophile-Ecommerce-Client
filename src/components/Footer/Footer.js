@@ -46,6 +46,7 @@ export default function Footer({ categories }) {
           <a
             href="https://www.facebook.com/"
             target="_blank"
+            rel="noreferrer"
             className="footer__social-link"
           >
             <img
@@ -57,6 +58,7 @@ export default function Footer({ categories }) {
           <a
             href="https://twitter.com/?lang=en"
             target="_blank"
+            rel="noreferrer"
             className="footer__social-link"
           >
             <img
@@ -68,6 +70,7 @@ export default function Footer({ categories }) {
           <a
             href="https://www.instagram.com/"
             target="_blank"
+            rel="noreferrer"
             className="footer__social-link"
           >
             <img
@@ -85,6 +88,7 @@ export default function Footer({ categories }) {
           <a
             href="https://www.facebook.com/"
             target="_blank"
+            rel="noreferrer"
             className="footer__social-link"
           >
             <img
@@ -96,6 +100,7 @@ export default function Footer({ categories }) {
           <a
             href="https://twitter.com/?lang=en"
             target="_blank"
+            rel="noreferrer"
             className="footer__social-link"
           >
             <img
@@ -107,6 +112,7 @@ export default function Footer({ categories }) {
           <a
             href="https://www.instagram.com/"
             target="_blank"
+            rel="noreferrer"
             className="footer__social-link"
           >
             <img

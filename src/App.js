@@ -88,7 +88,7 @@ function App() {
           className="cart-modal-container"
           sx={{
             "& .MuiBackdrop-root": {
-              top: "5rem",
+              top: "6rem",
             },
           }}
         >

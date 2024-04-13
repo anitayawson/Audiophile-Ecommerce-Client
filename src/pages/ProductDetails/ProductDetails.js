@@ -94,7 +94,9 @@ export default function ProductDetails() {
             )}
             <h2 className="product__name">{product.name}</h2>
             <p className="product__description">{product.description}</p>
-            <h6 className="product__price">$ {formatNumber(product.price)}</h6>
+            <h6 className="product__price">
+              $ {product.price ? formatNumber(product.price) : "N/A"}
+            </h6>
             <div className="product__cta">
               <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
               <button className="product__btn" onClick={addToCart}>
@@ -103,11 +105,16 @@ export default function ProductDetails() {
             </div>
           </div>
         </article>
-
-        <div className="features">
-          <h3 className="product__subtitle">Features</h3>
-          <p className="features__description">{product.features}</p>
-        </div>
+        {product.features && (
+          <div className="features">
+            <h3 className="product__subtitle">Features</h3>
+            {product.features.split("\n\n").map((paragraph, index) => (
+              <p key={index} className="features__description">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        )}
 
         <div className="content">
           <h3 className="product__subtitle">In the Box</h3>
@@ -119,6 +126,56 @@ export default function ProductDetails() {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="gallery">
+          <div className="gallery__column-container">
+            <picture>
+              <source
+                media="(max-width: 767px)"
+                srcSet={galleryImages[0]?.images?.first?.mobile}
+              />
+              <source
+                media="(max-width: 1279px)"
+                srcSet={galleryImages[0]?.images?.first?.tablet}
+              />
+              <img
+                className="gallery__img"
+                src={galleryImages[0]?.images?.first?.desktop}
+                alt={product.name}
+              />
+            </picture>
+            <picture>
+              <source
+                media="(max-width: 767px)"
+                srcSet={galleryImages[0]?.images?.second?.mobile}
+              />
+              <source
+                media="(max-width: 1279px)"
+                srcSet={galleryImages[0]?.images?.second?.tablet}
+              />
+              <img
+                className="gallery__img"
+                srcSet={galleryImages[0]?.images?.second?.desktop}
+                alt={product.name}
+              />
+            </picture>
+          </div>
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet={galleryImages[0]?.images?.third?.mobile}
+            />
+            <source
+              media="(max-width: 1279px)"
+              srcSet={galleryImages[0]?.images?.third?.tablet}
+            />
+            <img
+              className="gallery__img"
+              srcSet={galleryImages[0]?.images?.third?.desktop}
+              alt={product.name}
+            />
+          </picture>
         </div>
       </div>
       <CategorySelector />
