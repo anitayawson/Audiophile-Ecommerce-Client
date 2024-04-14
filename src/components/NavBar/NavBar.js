@@ -2,9 +2,15 @@ import "./NavBar.scss";
 import menuIcon from "../../assets/icons/icon-hamburger.svg";
 import logo from "../../assets/icons/logo.svg";
 import { ReactComponent as CartIcon } from "../../assets/icons/icon-cart.svg";
+import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
 
-export default function NavBar({ toggleMenu, handleCartOpen, categories }) {
+export default function NavBar({
+  toggleMenu,
+  handleCartOpen,
+  categories,
+  cartItems,
+}) {
   return (
     <nav className="nav">
       <img
@@ -30,7 +36,17 @@ export default function NavBar({ toggleMenu, handleCartOpen, categories }) {
           </Link>
         ))}
       </ul>
-      <CartIcon fill="white" onClick={handleCartOpen} className="cart-icon" />
+      {cartItems.length > 0 ? (
+        <Badge badgeContent={cartItems.length} color="secondary">
+          <CartIcon
+            fill="white"
+            onClick={handleCartOpen}
+            className="cart-icon"
+          />
+        </Badge>
+      ) : (
+        <CartIcon fill="white" onClick={handleCartOpen} className="cart-icon" />
+      )}
     </nav>
   );
 }

@@ -17,6 +17,7 @@ function App() {
   const cartModalRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   const [categories, setCategories] = useState([]);
 
@@ -31,7 +32,15 @@ function App() {
 
   useEffect(() => {
     fetchCategories();
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -51,6 +60,10 @@ function App() {
     setCartOpen(false);
   };
 
+  const updateCartItems = (updatedItems) => {
+    setCartItems(updatedItems);
+  };
+
   return (
     <BrowserRouter>
       <div className="nav-container">
@@ -58,6 +71,7 @@ function App() {
           toggleMenu={toggleMenu}
           handleCartOpen={handleCartOpen}
           categories={categories}
+          cartItems={cartItems}
         />
       </div>
       {showMenu && (
@@ -75,7 +89,7 @@ function App() {
           />
           <Route
             path="/product/:slug"
-            element={<ProductDetails />}
+            element={<ProductDetails updateCartItems={updateCartItems} />}
             categories={categories}
           />
           <Route path="/checkout" element={<Checkout />} />
@@ -92,7 +106,11 @@ function App() {
             },
           }}
         >
-          <CartModal ref={cartModalRef} />
+          <CartModal
+            ref={cartModalRef}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
         </Modal>
       </main>
       <Footer categories={categories} />

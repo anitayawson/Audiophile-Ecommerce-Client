@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef } from "react";
 import { Box } from "@mui/material";
 import { formatNumber } from "../../utils";
 import "./CartModal.scss";
@@ -6,16 +6,7 @@ import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import { Link } from "react-router-dom";
 import { ReactComponent as CartIcon } from "../../assets/icons/icon-cart.svg";
 
-const CartModal = forwardRef((props, ref) => {
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    const storedCartItems = localStorage.getItem("cartItems");
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
-
+const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
   const updateCartItemQuantity = (index, newQuantity) => {
     const updatedCartItems = [...cartItems];
     newQuantity = Math.max(newQuantity, 1);
