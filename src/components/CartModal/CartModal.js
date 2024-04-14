@@ -18,9 +18,12 @@ const CartModal = forwardRef((props, ref) => {
 
   const updateCartItemQuantity = (index, newQuantity) => {
     const updatedCartItems = [...cartItems];
+    newQuantity = Math.max(newQuantity, 1);
     updatedCartItems[index].quantity = newQuantity;
     setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+
+    const updatedCartItemsJSON = JSON.stringify(updatedCartItems);
+    localStorage.setItem("cartItems", updatedCartItemsJSON);
   };
 
   const calculateTotalPrice = () => {
