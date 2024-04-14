@@ -26,8 +26,15 @@ const CartModal = forwardRef((props, ref) => {
     localStorage.setItem("cartItems", updatedCartItemsJSON);
   };
 
+  const handleSetQuantity = (index, newQuantity) => {
+    updateCartItemQuantity(index, newQuantity);
+  };
+
   const calculateTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   const removeAllItems = () => {
@@ -73,7 +80,7 @@ const CartModal = forwardRef((props, ref) => {
               <QuantitySelector
                 quantity={item.quantity}
                 setQuantity={(newQuantity) =>
-                  updateCartItemQuantity(index, newQuantity)
+                  handleSetQuantity(index, newQuantity)
                 }
               />
             </article>
