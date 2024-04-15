@@ -37,7 +37,12 @@ export default function NavBar({
         ))}
       </ul>
       {cartItems.length > 0 ? (
-        <Badge badgeContent={cartItems.length} color="secondary">
+        <Badge
+          badgeContent={cartItems.length}
+          color="secondary"
+          className="custom-badge"
+          onClick={handleCartOpen}
+        >
           <CartIcon
             fill="white"
             onClick={handleCartOpen}

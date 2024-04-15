@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 import logo from "../../assets/icons/logo.svg";
-import facebookIcon from "../../assets/icons/icon-facebook.svg";
-import twitterIcon from "../../assets/icons/icon-twitter.svg";
-import instagramIcon from "../../assets/icons/icon-instagram.svg";
+import { ReactComponent as FacebookIcon } from "../../assets/icons/icon-facebook.svg";
+import { ReactComponent as TwitterIcon } from "../../assets/icons/icon-twitter.svg";
+import { ReactComponent as InstagramIcon } from "../../assets/icons/icon-instagram.svg";
 
 export default function Footer({ categories }) {
   const handleItemClick = () => {
@@ -49,11 +49,7 @@ export default function Footer({ categories }) {
             rel="noreferrer"
             className="footer__social-link"
           >
-            <img
-              className="footer__social-icon"
-              src={facebookIcon}
-              alt="facebook"
-            />
+            <FacebookIcon className="footer__social-icon" />
           </a>
           <a
             href="https://twitter.com/?lang=en"
@@ -61,11 +57,7 @@ export default function Footer({ categories }) {
             rel="noreferrer"
             className="footer__social-link"
           >
-            <img
-              className="footer__social-icon"
-              src={twitterIcon}
-              alt="twitter"
-            />
+            <TwitterIcon className="footer__social-icon" />
           </a>
           <a
             href="https://www.instagram.com/"
@@ -73,11 +65,7 @@ export default function Footer({ categories }) {
             rel="noreferrer"
             className="footer__social-link"
           >
-            <img
-              className="footer__social-icon"
-              src={instagramIcon}
-              alt="instagram"
-            />
+            <InstagramIcon className="footer__social-icon" />
           </a>
         </div>
       </div>
@@ -91,11 +79,7 @@ export default function Footer({ categories }) {
             rel="noreferrer"
             className="footer__social-link"
           >
-            <img
-              className="footer__social-icon"
-              src={facebookIcon}
-              alt="facebook"
-            />
+            <FacebookIcon className="footer__social-icon" />
           </a>
           <a
             href="https://twitter.com/?lang=en"
@@ -103,11 +87,7 @@ export default function Footer({ categories }) {
             rel="noreferrer"
             className="footer__social-link"
           >
-            <img
-              className="footer__social-icon"
-              src={twitterIcon}
-              alt="twitter"
-            />
+            <TwitterIcon className="footer__social-icon" />
           </a>
           <a
             href="https://www.instagram.com/"
@@ -115,11 +95,7 @@ export default function Footer({ categories }) {
             rel="noreferrer"
             className="footer__social-link"
           >
-            <img
-              className="footer__social-icon"
-              src={instagramIcon}
-              alt="instagram"
-            />
+            <InstagramIcon className="footer__social-icon" />
           </a>
         </div>
       </div>
