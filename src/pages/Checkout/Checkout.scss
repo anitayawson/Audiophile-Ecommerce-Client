@@ -37,4 +37,12 @@
 
 .confirmation-modal-container {
   margin: 3rem 1.5rem 0;
+
+  @include tablet {
+    margin: 8.25rem 7.125rem;
+  }
+
+  @include desktop {
+    margin: 10% 30%;
+  }
 }
