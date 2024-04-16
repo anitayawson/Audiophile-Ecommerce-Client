@@ -1,4 +1,5 @@
 import "./CheckoutForm.scss";
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -14,6 +15,8 @@ const validationSchema = Yup.object({
 });
 
 export default function CheckoutForm() {
+  const [paymentMethod, setPaymentMethod] = useState("e-money");
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -33,6 +36,14 @@ export default function CheckoutForm() {
       console.log(values);
     },
   });
+
+  const handlePaymentMethodClick = (value) => {
+    setPaymentMethod(value);
+    const radioInput = document.getElementById(value);
+    if (radioInput) {
+      radioInput.click();
+    }
+  };
 
   return (
     <form className="checkout-form" onSubmit={formik.handleSubmit}>
@@ -201,43 +212,64 @@ export default function CheckoutForm() {
 
         <label className="checkout-form__label">
           Payment Method
-          <div className="checkout-form__payment-method">
+          <div
+            className={`checkout-form__payment-method ${
+              paymentMethod === "e-money" ? "selected" : ""
+            }`}
+            onClick={() => handlePaymentMethodClick("e-money")}
+          >
             <input
               type="radio"
               name="options"
               id="e-money"
               value="e-money"
+              checked={paymentMethod === "e-money"}
+              onChange={() => setPaymentMethod("e-money")}
               defaultChecked
             />
             <p>e-Money</p>
           </div>
         </label>
-        <div className="checkout-form__payment-method">
-          <input type="radio" name="options" id="cash" value="cash" />
+        <div
+          className={`checkout-form__payment-method ${
+            paymentMethod === "cash" ? "selected" : ""
+          }`}
+          onClick={() => handlePaymentMethodClick("cash")}
+        >
+          <input
+            type="radio"
+            name="options"
+            id="cash"
+            value="cash"
+            checked={paymentMethod === "cash"}
+            onChange={() => setPaymentMethod("cash")}
+          />
           <p>Cash on Delivery</p>
         </div>
 
-        <div className="checkout-form__tablet-wrapper">
-          <label className="checkout-form__label">
-            e-Money Number
-            <input
-              id="emoney_number"
-              name="emoney_number"
-              className="checkout-form__input"
-              placeholder="238521993"
-            />
-          </label>
+        {paymentMethod === "e-money" && (
+          <div className="checkout-form__tablet-wrapper">
+            <label className="checkout-form__label">
+              e-Money Number
+              <input
+                id="emoney_number"
+                name="emoney_number"
+                className="checkout-form__input"
+                placeholder="238521993"
+              />
+            </label>
 
-          <label className="checkout-form__label">
-            e-money PIN
-            <input
-              id="emoney_pin"
-              name="emoney_pin"
-              className="checkout-form__input"
-              placeholder="6891"
-            />
-          </label>
-        </div>
+            <label className="checkout-form__label">
+              e-money PIN
+              <input
+                id="emoney_pin"
+                name="emoney_pin"
+                className="checkout-form__input"
+                placeholder="6891"
+              />
+            </label>
+          </div>
+        )}
       </article>
     </form>
   );

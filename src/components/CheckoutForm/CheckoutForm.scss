@@ -71,6 +71,11 @@
     gap: 1rem;
   }
 
+  &__payment-method.selected {
+    border-color: $primary-orange;
+    outline: 1px solid $primary-orange;
+  }
+
   &__tablet-wrapper {
     @include tablet {
       display: grid;
