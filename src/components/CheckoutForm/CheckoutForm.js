@@ -1,39 +1,106 @@
 import "./CheckoutForm.scss";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Wrong email format").required("Email is required"),
+  phone: Yup.string().required("Phone number is required"),
+  address: Yup.string().required("Address is required"),
+  zip_code: Yup.string().required("ZIP code is required"),
+  city: Yup.string().required("City is required"),
+  country: Yup.string().required("Country is required"),
+  // payment_method: Yup.string().required("Payment method is required"),
+});
 
 export default function CheckoutForm() {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      zip_code: "",
+      city: "",
+      country: "",
+      payment_method: "",
+      emoney_number: "",
+      emoney_pin: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      // Form submission
+      console.log(values);
+    },
+  });
+
   return (
-    <form className="checkout-form">
+    <form className="checkout-form" onSubmit={formik.handleSubmit}>
       <h2 className="checkout-form__title">Checkout</h2>
 
       <article className="checkout-form__section">
         <p className="checkout-form__subtitle">Billing details</p>
         <div className="checkout-form__tablet-wrapper">
-          <label className="checkout-form__label">
+          <label
+            className={`checkout-form__label ${
+              formik.touched.name && formik.errors.name ? "error" : ""
+            }`}
+          >
             Name
+            {formik.touched.name && formik.errors.name ? (
+              <div className="error-text">{formik.errors.name}</div>
+            ) : null}
             <input
               id="name"
               name="name"
-              className="checkout-form__input"
+              className={`checkout-form__input ${
+                formik.touched.name && formik.errors.name ? "error-border" : ""
+              }`}
               placeholder="Alexei Ward"
+              {...formik.getFieldProps("name")}
             />
           </label>
 
-          <label className="checkout-form__label">
-            Email address
+          <label
+            className={`checkout-form__label ${
+              formik.touched.email && formik.errors.email ? "error" : ""
+            }`}
+          >
+            Email Address
+            {formik.touched.email && formik.errors.email ? (
+              <div className="error-text">{formik.errors.email}</div>
+            ) : null}
             <input
               id="email"
               name="email"
-              className="checkout-form__input"
+              className={`checkout-form__input ${
+                formik.touched.email && formik.errors.email
+                  ? "error-border"
+                  : ""
+              }`}
               placeholder="alexei@mail.com"
+              {...formik.getFieldProps("email")}
             />
           </label>
-          <label className="checkout-form__label">
-            Phone number
+          <label
+            className={`checkout-form__label ${
+              formik.touched.phone && formik.errors.phone ? "error" : ""
+            }`}
+          >
+            Phone Number
+            {formik.touched.phone && formik.errors.phone ? (
+              <div className="error-text">{formik.errors.phone}</div>
+            ) : null}
             <input
-              id="number"
-              name="number"
-              className="checkout-form__input"
+              id="phone"
+              name="phone"
+              className={`checkout-form__input ${
+                formik.touched.phone && formik.errors.phone
+                  ? "error-border"
+                  : ""
+              }`}
               placeholder="+1 202-555-0136"
+              {...formik.getFieldProps("phone")}
             />
           </label>
         </div>
@@ -41,43 +108,89 @@ export default function CheckoutForm() {
 
       <article className="checkout-form__section">
         <p className="checkout-form__subtitle">Shipping info</p>
-        <label className="checkout-form__label">
+        <label
+          className={`checkout-form__label ${
+            formik.touched.address && formik.errors.address ? "error" : ""
+          }`}
+        >
           Address
+          {formik.touched.address && formik.errors.address ? (
+            <div className="error-text">{formik.errors.address}</div>
+          ) : null}
           <input
             id="address"
             name="address"
-            className="checkout-form__input"
+            className={`checkout-form__input ${
+              formik.touched.address && formik.errors.address
+                ? "error-border"
+                : ""
+            }`}
             placeholder="1137 Williams Avenue"
+            {...formik.getFieldProps("address")}
           />
         </label>
 
         <div className="checkout-form__tablet-wrapper">
-          <label className="checkout-form__label">
-            ZIP code
+          <label
+            className={`checkout-form__label ${
+              formik.touched.zip_code && formik.errors.zip_code ? "error" : ""
+            }`}
+          >
+            ZIP Code
+            {formik.touched.zip_code && formik.errors.zip_code ? (
+              <div className="error-text">{formik.errors.zip_code}</div>
+            ) : null}
             <input
-              id="zipCode"
-              name="zipCode"
-              className="checkout-form__input"
+              id="zip_code"
+              name="zip_code"
+              className={`checkout-form__input ${
+                formik.touched.zip_code && formik.errors.zip_code
+                  ? "error-border"
+                  : ""
+              }`}
               placeholder="10001"
+              {...formik.getFieldProps("zip_code")}
             />
           </label>
 
-          <label className="checkout-form__label">
+          <label
+            className={`checkout-form__label ${
+              formik.touched.city && formik.errors.city ? "error" : ""
+            }`}
+          >
             City
+            {formik.touched.city && formik.errors.city ? (
+              <div className="error-text">{formik.errors.city}</div>
+            ) : null}
             <input
               id="city"
               name="city"
-              className="checkout-form__input"
+              className={`checkout-form__input ${
+                formik.touched.city && formik.errors.city ? "error-border" : ""
+              }`}
               placeholder="New York"
+              {...formik.getFieldProps("city")}
             />
           </label>
-          <label className="checkout-form__label">
+          <label
+            className={`checkout-form__label ${
+              formik.touched.country && formik.errors.country ? "error" : ""
+            }`}
+          >
             Country
+            {formik.touched.country && formik.errors.country ? (
+              <div className="error-text">{formik.errors.country}</div>
+            ) : null}
             <input
               id="country"
               name="country"
-              className="checkout-form__input"
+              className={`checkout-form__input ${
+                formik.touched.country && formik.errors.country
+                  ? "error-border"
+                  : ""
+              }`}
               placeholder="United States"
+              {...formik.getFieldProps("country")}
             />
           </label>
         </div>
@@ -87,9 +200,15 @@ export default function CheckoutForm() {
         <p className="checkout-form__subtitle">Payment details</p>
 
         <label className="checkout-form__label">
-          Payment method
+          Payment Method
           <div className="checkout-form__payment-method">
-            <input type="radio" name="options" id="e-money" value="e-money" />
+            <input
+              type="radio"
+              name="options"
+              id="e-money"
+              value="e-money"
+              defaultChecked
+            />
             <p>e-Money</p>
           </div>
         </label>
@@ -100,10 +219,10 @@ export default function CheckoutForm() {
 
         <div className="checkout-form__tablet-wrapper">
           <label className="checkout-form__label">
-            e-Money number
+            e-Money Number
             <input
-              id="emoneyNumber"
-              name="emoneyNumber"
+              id="emoney_number"
+              name="emoney_number"
               className="checkout-form__input"
               placeholder="238521993"
             />
@@ -112,8 +231,8 @@ export default function CheckoutForm() {
           <label className="checkout-form__label">
             e-money PIN
             <input
-              id="emoneyPin"
-              name="emoneyPin"
+              id="emoney_pin"
+              name="emoney_pin"
               className="checkout-form__input"
               placeholder="6891"
             />
