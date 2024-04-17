@@ -4,15 +4,33 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import InputMask from "react-input-mask";
 
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string().email("Wrong email format").required("Email is required"),
-  phone: Yup.string().required("Phone number is required"),
-  address: Yup.string().required("Address is required"),
-  zip_code: Yup.string().required("ZIP code is required"),
-  city: Yup.string().required("City is required"),
-  country: Yup.string().required("Country is required"),
-});
+const validationSchema = Yup.lazy((values) =>
+  Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string()
+      .email("Wrong email format")
+      .required("Email is required"),
+    phone: Yup.string().required("Phone number is required"),
+    address: Yup.string().required("Address is required"),
+    zip_code: Yup.string().required("ZIP code is required"),
+    city: Yup.string().required("City is required"),
+    country: Yup.string().required("Country is required"),
+    payment_method: Yup.string(),
+
+    emoney_number:
+      values.payment_method === "e-money"
+        ? Yup.string()
+            .required("e-Money Number is required")
+            .matches(/^[0-9]+$/, "e-Money Number must be numeric")
+        : Yup.string(),
+    emoney_pin:
+      values.payment_method === "e-money"
+        ? Yup.string()
+            .required("PIN is required")
+            .matches(/^[0-9]+$/, "PIN must be numeric")
+        : Yup.string(),
+  })
+);
 
 export default function CheckoutForm() {
   const [paymentMethod, setPaymentMethod] = useState("e-money");
@@ -26,7 +44,7 @@ export default function CheckoutForm() {
       zip_code: "",
       city: "",
       country: "",
-      payment_method: "",
+      payment_method: "e-money",
       emoney_number: "",
       emoney_pin: "",
     },
@@ -39,10 +57,10 @@ export default function CheckoutForm() {
 
   const handlePaymentMethodClick = (value) => {
     setPaymentMethod(value);
-    const radioInput = document.getElementById(value);
-    if (radioInput) {
-      radioInput.click();
-    }
+
+    formik.setFieldValue("payment_method", value);
+    formik.setFieldValue("emoney_number", "");
+    formik.setFieldValue("emoney_pin", "");
   };
 
   return (
@@ -253,23 +271,51 @@ export default function CheckoutForm() {
 
         {paymentMethod === "e-money" && (
           <div className="checkout-form__tablet-wrapper">
-            <label className="checkout-form__label">
+            <label
+              className={`checkout-form__label ${
+                formik.touched.emoney_number && formik.errors.emoney_number
+                  ? "error"
+                  : ""
+              }`}
+            >
               e-Money Number
+              {formik.touched.emoney_number && formik.errors.emoney_number ? (
+                <div className="error-text">{formik.errors.emoney_number}</div>
+              ) : null}
               <input
                 id="emoney_number"
                 name="emoney_number"
-                className="checkout-form__input"
+                className={`checkout-form__input ${
+                  formik.touched.emoney_number && formik.errors.emoney_number
+                    ? "error-border"
+                    : ""
+                }`}
                 placeholder="238521993"
+                {...formik.getFieldProps("emoney_number")}
               />
             </label>
 
-            <label className="checkout-form__label">
+            <label
+              className={`checkout-form__label ${
+                formik.touched.emoney_pin && formik.errors.emoney_pin
+                  ? "error"
+                  : ""
+              }`}
+            >
               e-money PIN
+              {formik.touched.emoney_pin && formik.errors.emoney_pin ? (
+                <div className="error-text">{formik.errors.emoney_pin}</div>
+              ) : null}
               <input
                 id="emoney_pin"
                 name="emoney_pin"
-                className="checkout-form__input"
+                className={`checkout-form__input ${
+                  formik.touched.emoney_pin && formik.errors.emoney_pin
+                    ? "error-border"
+                    : ""
+                }`}
                 placeholder="6891"
+                {...formik.getFieldProps("emoney_pin")}
               />
             </label>
           </div>
