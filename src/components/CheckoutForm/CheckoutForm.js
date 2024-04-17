@@ -2,6 +2,7 @@ import "./CheckoutForm.scss";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import InputMask from "react-input-mask";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -11,7 +12,6 @@ const validationSchema = Yup.object({
   zip_code: Yup.string().required("ZIP code is required"),
   city: Yup.string().required("City is required"),
   country: Yup.string().required("Country is required"),
-  // payment_method: Yup.string().required("Payment method is required"),
 });
 
 export default function CheckoutForm() {
@@ -102,7 +102,9 @@ export default function CheckoutForm() {
             {formik.touched.phone && formik.errors.phone ? (
               <div className="error-text">{formik.errors.phone}</div>
             ) : null}
-            <input
+            <InputMask
+              mask="+1 999-999-9999"
+              maskChar=" "
               id="phone"
               name="phone"
               className={`checkout-form__input ${
@@ -111,6 +113,8 @@ export default function CheckoutForm() {
                   : ""
               }`}
               placeholder="+1 202-555-0136"
+              value={formik.values.phone}
+              onChange={formik.handleChange}
               {...formik.getFieldProps("phone")}
             />
           </label>
