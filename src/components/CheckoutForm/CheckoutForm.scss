@@ -67,6 +67,7 @@
 
   &__payment-method {
     @include input-field;
+    cursor: pointer;
     display: flex;
     gap: 1rem;
   }

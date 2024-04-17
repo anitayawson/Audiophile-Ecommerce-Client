@@ -1,13 +1,21 @@
 import { forwardRef } from "react";
-import { Box } from "@mui/material";
+import { useState } from "react";
+import { Box, Collapse } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./OrderConfirmationModal.scss";
 
-const OrderConfirmationModal = forwardRef((props, ref) => {
+const OrderConfirmationModal = forwardRef(({ cartItems }, ref) => {
   const navigate = useNavigate();
+  const [expanded, setExpanded] = useState(false);
 
   const returnToHome = () => {
     navigate("/");
+  };
+
+  const firstItem = cartItems[0];
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
   };
 
   return (
@@ -26,20 +34,45 @@ const OrderConfirmationModal = forwardRef((props, ref) => {
         <div className="confirmation-modal__items">
           <div className="confirmation-modal__main-item">
             <img
-              src="https://res.cloudinary.com/duepohol4/image/upload/v1710782875/Audiophile/cart/image-xx99-mark-two-headphones_fksqhm.jpg"
-              alt="prod img"
+              src={firstItem.image}
+              alt={firstItem.name}
               className="confirmation-modal__item-img"
             />
             <div className="confirmation-modal__item-details">
-              <p className="cart__item-name">XX99 MK II</p>
-              <p className="cart__item-price">$ 100</p>
+              <p className="cart__item-name">{firstItem.name}</p>
+              <p className="cart__item-price">$ {firstItem.price}</p>
             </div>
-            <p className="summary__quantity">x1</p>
+            <p className="summary__quantity">x{firstItem.quantity}</p>
           </div>
-          <div className="confirmation-modal__other-items">
-            <hr className="confirmation-modal__border" />
-            <p>and 2 other item(s)</p>
-          </div>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            {cartItems.slice(1).map((item, index) => (
+              <div key={index} className="confirmation-modal__item">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="confirmation-modal__item-img"
+                />
+                <div className="confirmation-modal__item-details">
+                  <p className="cart__item-name">{item.name}</p>
+                  <p className="cart__item-price">$ {item.price}</p>
+                </div>
+                <p className="summary__quantity">x{item.quantity}</p>
+              </div>
+            ))}
+          </Collapse>
+          {cartItems.length > 1 && (
+            <div className="confirmation-modal__other-items">
+              <hr className="confirmation-modal__border" />
+              <button
+                onClick={handleExpandClick}
+                className="confirmation-modal__expand-btn"
+              >
+                {expanded
+                  ? "Show Less"
+                  : `and ${cartItems.length - 1} other item(s)`}
+              </button>
+            </div>
+          )}
         </div>
         <div className="confirmation-modal__grand-total">
           <p className="confirmation-modal__total-label">Grand Total</p>

@@ -51,7 +51,7 @@ export default function Checkout() {
         aria-describedby="modal-modal-description"
         className="confirmation-modal-container"
       >
-        <OrderConfirmationModal ref={checkoutModalRef} />
+        <OrderConfirmationModal cartItems={cartItems} ref={checkoutModalRef} />
       </Modal>
     </section>
   );
