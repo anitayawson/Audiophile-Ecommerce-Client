@@ -17,7 +17,7 @@ function App() {
   const cartModalRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-
+  const [cartItems, setCartItems] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
@@ -31,7 +31,19 @@ function App() {
 
   useEffect(() => {
     fetchCategories();
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
   }, []);
+
+  const updateCartItems = (updatedItems) => {
+    setCartItems(updatedItems);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -58,6 +70,7 @@ function App() {
           toggleMenu={toggleMenu}
           handleCartOpen={handleCartOpen}
           categories={categories}
+          cartItems={cartItems}
         />
       </div>
       {showMenu && (
@@ -75,7 +88,7 @@ function App() {
           />
           <Route
             path="/product/:slug"
-            element={<ProductDetails />}
+            element={<ProductDetails updateCartItems={updateCartItems} />}
             categories={categories}
           />
           <Route path="/checkout" element={<Checkout />} />
@@ -88,11 +101,15 @@ function App() {
           className="cart-modal-container"
           sx={{
             "& .MuiBackdrop-root": {
-              top: "5rem",
+              top: "6rem",
             },
           }}
         >
-          <CartModal ref={cartModalRef} />
+          <CartModal
+            ref={cartModalRef}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
         </Modal>
       </main>
       <Footer categories={categories} />

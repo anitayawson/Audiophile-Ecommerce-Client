@@ -31,6 +31,13 @@
     @include body;
     text-decoration: underline;
     color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    @include desktop {
+      &:hover {
+        color: $primary-orange;
+      }
+    }
   }
 
   &__item {
@@ -75,6 +82,34 @@
   }
 
   &__checkout-btn {
+    @include primary-btn;
+  }
+}
+
+.empty-cart {
+  &__icon {
+    svg path {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+
+  &__message {
+    @include body;
+    text-align: center;
+    color: $secondary-black;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+  }
+
+  &__submessage {
+    @include body;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__btn {
     @include primary-btn;
   }
 }
