@@ -18,7 +18,6 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
@@ -37,6 +36,10 @@ function App() {
       setCartItems(JSON.parse(storedCartItems));
     }
   }, []);
+
+  const updateCartItems = (updatedItems) => {
+    setCartItems(updatedItems);
+  };
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -58,10 +61,6 @@ function App() {
 
   const handleCartClose = () => {
     setCartOpen(false);
-  };
-
-  const updateCartItems = (updatedItems) => {
-    setCartItems(updatedItems);
   };
 
   return (
