@@ -8,7 +8,7 @@ import QuantitySelector from "../../components/QuantitySelector/QuantitySelector
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 import InfoSection from "../../components/InfoSection/InfoSection";
 
-export default function ProductDetails({ updateCartItems }) {
+export default function ProductDetails({ updateCartItems, cartItems }) {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
@@ -59,11 +59,7 @@ export default function ProductDetails({ updateCartItems }) {
       image: product?.images?.mobile,
       quantity: quantity,
     };
-    const existingCartItems =
-      JSON.parse(localStorage.getItem("cartItems")) || [];
-    const updatedCartItems = [...existingCartItems, newItem];
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-
+    const updatedCartItems = [...cartItems, newItem];
     updateCartItems(updatedCartItems);
   };
 

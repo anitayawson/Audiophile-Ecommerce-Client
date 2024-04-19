@@ -20,17 +20,18 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/api/categories`);
-      setCategories(response.data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/categories`);
+        setCategories(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
     fetchCategories();
+
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
@@ -39,11 +40,8 @@ function App() {
 
   const updateCartItems = (updatedItems) => {
     setCartItems(updatedItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedItems));
   };
-
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -88,7 +86,12 @@ function App() {
           />
           <Route
             path="/product/:slug"
-            element={<ProductDetails updateCartItems={updateCartItems} />}
+            element={
+              <ProductDetails
+                updateCartItems={updateCartItems}
+                cartItems={cartItems}
+              />
+            }
             categories={categories}
           />
           <Route path="/checkout" element={<Checkout />} />

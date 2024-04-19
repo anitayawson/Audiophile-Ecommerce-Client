@@ -7,18 +7,16 @@ import { Link } from "react-router-dom";
 import { ReactComponent as CartIcon } from "../../assets/icons/icon-cart.svg";
 
 const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
+  const handleSetQuantity = (index, newQuantity) => {
+    updateCartItemQuantity(index, newQuantity);
+  };
+
   const updateCartItemQuantity = (index, newQuantity) => {
     const updatedCartItems = [...cartItems];
     newQuantity = Math.max(newQuantity, 1);
     updatedCartItems[index].quantity = newQuantity;
     setCartItems(updatedCartItems);
-
-    const updatedCartItemsJSON = JSON.stringify(updatedCartItems);
-    localStorage.setItem("cartItems", updatedCartItemsJSON);
-  };
-
-  const handleSetQuantity = (index, newQuantity) => {
-    updateCartItemQuantity(index, newQuantity);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
   const calculateTotalPrice = () => {
