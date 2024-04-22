@@ -4,7 +4,7 @@ import { formatNumber } from "../../utils";
 import "./CartModal.scss";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import { Link } from "react-router-dom";
-import { ReactComponent as CartIcon } from "../../assets/icons/icon-cart.svg";
+import CartIcon from "../../assets/icons/icon-cart.png";
 
 const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
   const handleSetQuantity = (index, newQuantity) => {
@@ -32,11 +32,10 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
   };
 
   return (
-    <Box ref={ref} className="cart">
+    <Box ref={ref} className="cart" tabIndex={-1}>
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <h6 className="cart__title">Cart</h6>
-          <CartIcon fill="rgba(0, 0, 0, 0.3)" className="empty-cart__icon" />
+          <img className="empty-cart__icon" src={CartIcon} alt="cart icon" />
           <p className="empty-cart__message">Your cart is empty.</p>
           <p className="empty-cart__submessage">
             Start adding items to your cart to see them here.

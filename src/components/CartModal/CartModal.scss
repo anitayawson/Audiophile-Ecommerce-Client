@@ -88,10 +88,9 @@
 
 .empty-cart {
   &__icon {
-    svg path {
-      width: 6rem;
-      height: 6rem;
-    }
+    display: block;
+    margin: 1rem auto;
+    width: 2.5rem;
   }
 
   &__message {
