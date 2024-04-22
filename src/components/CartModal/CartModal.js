@@ -8,15 +8,16 @@ import CartIcon from "../../assets/icons/icon-cart.png";
 
 const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
   const handleSetQuantity = (index, newQuantity) => {
-    updateCartItemQuantity(index, newQuantity);
-  };
-
-  const updateCartItemQuantity = (index, newQuantity) => {
-    const updatedCartItems = [...cartItems];
-    newQuantity = Math.max(newQuantity, 1);
-    updatedCartItems[index].quantity = newQuantity;
-    setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    if (newQuantity === 0) {
+      const updatedCartItems = cartItems.filter((item, idx) => idx !== index);
+      setCartItems(updatedCartItems);
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    } else {
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[index].quantity = newQuantity;
+      setCartItems(updatedCartItems);
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    }
   };
 
   const calculateTotalPrice = () => {
@@ -67,6 +68,7 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
                 setQuantity={(newQuantity) =>
                   handleSetQuantity(index, newQuantity)
                 }
+                removeZero={true}
               />
             </article>
           ))}

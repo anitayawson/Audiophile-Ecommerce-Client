@@ -1,7 +1,11 @@
 import { useState } from "react";
 import "./QuantitySelector.scss";
 
-export default function QuantitySelector({ quantity, setQuantity }) {
+export default function QuantitySelector({
+  quantity,
+  setQuantity,
+  removeZero = false,
+}) {
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
 
   const incrementQuantity = () => {
@@ -15,6 +19,8 @@ export default function QuantitySelector({ quantity, setQuantity }) {
       const newQuantity = currentQuantity - 1;
       setCurrentQuantity(newQuantity);
       setQuantity(newQuantity);
+    } else if (removeZero) {
+      setQuantity(0);
     }
   };
 
