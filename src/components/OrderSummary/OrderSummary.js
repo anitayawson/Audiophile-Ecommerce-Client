@@ -1,18 +1,13 @@
 import "./OrderSummary.scss";
 import { formatNumber } from "../../utils";
 
-export default function OrderSummary({ handleCheckout, cartItems }) {
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-
-  const shippingCost = 50;
-
-  const VAT = Math.ceil(totalPrice * 0.2);
-
-  const grandTotal = totalPrice + shippingCost + VAT;
-
+export default function OrderSummary({
+  cartItems,
+  totalPrice,
+  shippingCost,
+  VAT,
+  grandTotal,
+}) {
   return (
     <section className="summary">
       <h6 className="summary__title">Summary</h6>
@@ -48,7 +43,7 @@ export default function OrderSummary({ handleCheckout, cartItems }) {
           <p className="summary__total-price">$ {formatNumber(grandTotal)}</p>
         </div>
       </article>
-      <button onClick={handleCheckout} className="summary__btn">
+      <button type="submit" className="summary__btn">
         Continue & Pay
       </button>
     </section>

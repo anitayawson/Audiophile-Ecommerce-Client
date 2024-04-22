@@ -2,14 +2,17 @@ import { forwardRef } from "react";
 import { useState } from "react";
 import { Box, Collapse } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { formatNumber } from "../../utils";
 import "./OrderConfirmationModal.scss";
 
-const OrderConfirmationModal = forwardRef(({ cartItems }, ref) => {
+const OrderConfirmationModal = forwardRef(({ cartItems, grandTotal }, ref) => {
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
 
   const returnToHome = () => {
+    localStorage.removeItem("cartItems");
     navigate("/");
+    window.location.reload();
   };
 
   const firstItem = cartItems[0];
@@ -76,7 +79,9 @@ const OrderConfirmationModal = forwardRef(({ cartItems }, ref) => {
         </div>
         <div className="confirmation-modal__grand-total">
           <p className="confirmation-modal__total-label">Grand Total</p>
-          <p className="confirmation-modal__total-price">$ 5,446</p>
+          <p className="confirmation-modal__total-price">
+            $ {formatNumber(grandTotal)}
+          </p>
         </div>
       </article>
       <button onClick={returnToHome} className="confirmation-modal__btn">
