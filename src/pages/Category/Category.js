@@ -6,7 +6,7 @@ import "./Category.scss";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 import InfoSection from "../../components/InfoSection/InfoSection";
 
-export default function Category() {
+export default function Category({ categories }) {
   const { categoryId } = useParams();
   const [categoryData, setCategoryData] = useState({
     category: {},
@@ -83,7 +83,7 @@ export default function Category() {
         </article>
       ))}
 
-      <CategorySelector />
+      <CategorySelector categories={categories} />
       <InfoSection />
     </section>
   );

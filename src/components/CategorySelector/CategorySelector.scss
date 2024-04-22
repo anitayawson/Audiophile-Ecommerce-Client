@@ -11,6 +11,12 @@
     flex-direction: row;
     gap: 0.625rem;
   }
+
+  @include desktop {
+    padding-left: 10.3125rem;
+    padding-right: 10.3125rem;
+    gap: 1.875rem;
+  }
 }
 
 .category-selector {

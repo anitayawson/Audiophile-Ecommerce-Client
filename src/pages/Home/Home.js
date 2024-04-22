@@ -16,7 +16,6 @@ export default function Home({ categories }) {
         `${BASE_URL}/api/products/category/1?isNew=1`
       );
       setNewProduct(response.data[0]);
-      // console.log(response.data[0]);
     } catch (error) {
       console.error("Error fetching new product:", error);
     }

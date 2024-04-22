@@ -22,7 +22,7 @@ const OrderConfirmationModal = forwardRef(({ cartItems, grandTotal }, ref) => {
   };
 
   return (
-    <Box ref={ref} className="confirmation-modal">
+    <Box ref={ref} className="confirmation-modal" tabIndex={-1}>
       <div className="confirmation-modal__header">
         <img
           src="https://res.cloudinary.com/duepohol4/image/upload/v1710782894/Audiophile/checkout/icon-order-confirmation_zomwp5.svg"

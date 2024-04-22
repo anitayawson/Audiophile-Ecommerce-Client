@@ -40,9 +40,6 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
           <p className="empty-cart__submessage">
             Start adding items to your cart to see them here.
           </p>
-          <Link to="/" className="empty-cart__btn">
-            Start Shopping
-          </Link>
         </div>
       ) : (
         <>

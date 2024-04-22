@@ -8,7 +8,11 @@ import QuantitySelector from "../../components/QuantitySelector/QuantitySelector
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 import InfoSection from "../../components/InfoSection/InfoSection";
 
-export default function ProductDetails({ updateCartItems, cartItems }) {
+export default function ProductDetails({
+  updateCartItems,
+  cartItems,
+  categories,
+}) {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
@@ -176,7 +180,7 @@ export default function ProductDetails({ updateCartItems, cartItems }) {
           </picture>
         </div>
       </div>
-      <CategorySelector />
+      <CategorySelector categories={categories} />
       <InfoSection />
     </section>
   );

@@ -78,11 +78,10 @@ function App() {
       )}
       <main onClick={closeMenu}>
         <Routes>
-          <Route path="/" element={<Home />} itemCategories={categories} />
+          <Route path="/" element={<Home categories={categories} />} />
           <Route
             path="/category/:categoryId"
-            element={<Category />}
-            categories={categories}
+            element={<Category categories={categories} />}
           />
           <Route
             path="/product/:slug"
@@ -90,9 +89,9 @@ function App() {
               <ProductDetails
                 updateCartItems={updateCartItems}
                 cartItems={cartItems}
+                categories={categories}
               />
             }
-            categories={categories}
           />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
