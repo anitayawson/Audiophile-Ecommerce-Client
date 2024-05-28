@@ -16,6 +16,11 @@
     width: 28%;
   }
 
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -45,6 +50,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   &__item-img {
@@ -68,7 +74,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem 0 1.5rem;
+    margin: 1.5rem 0;
   }
 
   &__total-text {
@@ -83,6 +89,7 @@
 
   &__checkout-btn {
     @include primary-btn;
+    text-align: center;
   }
 }
 
@@ -106,9 +113,5 @@
     color: rgba(0, 0, 0, 0.5);
     text-align: center;
     margin-bottom: 2rem;
-  }
-
-  &__btn {
-    @include primary-btn;
   }
 }

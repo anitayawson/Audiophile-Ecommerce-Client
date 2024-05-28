@@ -43,7 +43,7 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
           </p>
         </div>
       ) : (
-        <>
+        <div className="cart__container">
           <div className="cart__header">
             <h6 className="cart__title">Cart ({cartItems.length})</h6>
             {cartItems.length > 0 && (
@@ -64,6 +64,7 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
                 <p className="cart__item-price">$ {formatNumber(item.price)}</p>
               </div>
               <QuantitySelector
+                className="cart__quantity-selector"
                 quantity={item.quantity}
                 setQuantity={(newQuantity) =>
                   handleSetQuantity(index, newQuantity)
@@ -78,12 +79,10 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
               $ {formatNumber(calculateTotalPrice())}
             </h6>
           </div>
-          {cartItems.length > 0 && (
-            <Link to="/checkout" className="cart__checkout-btn">
-              Checkout
-            </Link>
-          )}
-        </>
+          <Link to="/checkout" className="cart__checkout-btn">
+            Checkout
+          </Link>
+        </div>
       )}
     </Box>
   );

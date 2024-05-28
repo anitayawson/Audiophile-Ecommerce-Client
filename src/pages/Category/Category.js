@@ -36,10 +36,6 @@ export default function Category({ categories }) {
 
   const { category, products } = categoryData;
 
-  const handleItemClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const sortedProducts = [...products].sort((a, b) => b.isNew - a.isNew);
 
   return (
@@ -75,7 +71,6 @@ export default function Category({ categories }) {
             <Link
               to={`/product/${product.slug}`}
               className="category__product-btn"
-              onClick={handleItemClick}
             >
               See Product
             </Link>
