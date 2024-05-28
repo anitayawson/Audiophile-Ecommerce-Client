@@ -5,23 +5,28 @@ import axios from "axios";
 import "./HomepageProductCards.scss";
 
 export default function HomepageProductCards() {
-  const [zx9Speaker, setZx9Speaker] = useState([]);
-  const [zx7Speaker, setZx7Speaker] = useState([]);
-  const [earphones, setEarphones] = useState([]);
+  const [products, setProducts] = useState({
+    zx9Speaker: {},
+    zx7Speaker: {},
+    earphones: {},
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const responseZx9 = await axios.get(`${BASE_URL}/api/products/id/6`);
-        setZx9Speaker(responseZx9.data);
-
-        const responseZx7 = await axios.get(`${BASE_URL}/api/products/id/5`);
-        setZx7Speaker(responseZx7.data);
-
-        const responseEarphones = await axios.get(
-          `${BASE_URL}/api/products/id/1`
+        const [responseZx9, responseZx7, responseEarphones] = await Promise.all(
+          [
+            axios.get(`${BASE_URL}/api/products/id/6`),
+            axios.get(`${BASE_URL}/api/products/id/5`),
+            axios.get(`${BASE_URL}/api/products/id/1`),
+          ]
         );
-        setEarphones(responseEarphones.data);
+
+        setProducts({
+          zx9Speaker: responseZx9.data,
+          zx7Speaker: responseZx7.data,
+          earphones: responseEarphones.data,
+        });
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -51,12 +56,15 @@ export default function HomepageProductCards() {
         </picture>
 
         <div className="zx9__body">
-          <h2 className="zx9__title">{zx9Speaker?.name}</h2>
+          <h2 className="zx9__title">{products.zx9Speaker?.name}</h2>
           <p className="zx9__description">
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <Link to={`/product/${zx9Speaker?.slug}`} className="zx9__btn">
+          <Link
+            to={`/product/${products.zx9Speaker?.slug}`}
+            className="zx9__btn"
+          >
             See Product
           </Link>
         </div>
@@ -64,8 +72,8 @@ export default function HomepageProductCards() {
 
       {/* ZX7 Speaker Card */}
       <article className="zx7">
-        <h4 className="zx7__title">{zx7Speaker?.name}</h4>
-        <Link to={`/product/${zx7Speaker?.slug}`} className="zx7__btn">
+        <h4 className="zx7__title">{products.zx7Speaker?.name}</h4>
+        <Link to={`/product/${products.zx7Speaker?.slug}`} className="zx7__btn">
           See Product
         </Link>
       </article>
@@ -89,8 +97,11 @@ export default function HomepageProductCards() {
 
         {/* YX1 Earphones Card */}
         <article className="yx1">
-          <h4 className="yx1__title">{earphones?.name}</h4>
-          <Link to={`/product/${earphones?.slug}`} className="yx1__btn">
+          <h4 className="yx1__title">{products.earphones?.name}</h4>
+          <Link
+            to={`/product/${products.earphones?.slug}`}
+            className="yx1__btn"
+          >
             See Product
           </Link>
         </article>
