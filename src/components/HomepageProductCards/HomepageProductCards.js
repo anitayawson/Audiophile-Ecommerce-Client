@@ -14,17 +14,14 @@ export default function HomepageProductCards() {
       try {
         const responseZx9 = await axios.get(`${BASE_URL}/api/products/id/6`);
         setZx9Speaker(responseZx9.data);
-        // console.log(responseZx9.data);
 
         const responseZx7 = await axios.get(`${BASE_URL}/api/products/id/5`);
         setZx7Speaker(responseZx7.data);
-        // console.log(responseZx9.data);
 
         const responseEarphones = await axios.get(
           `${BASE_URL}/api/products/id/1`
         );
         setEarphones(responseEarphones.data);
-        // console.log(responseZx9.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
