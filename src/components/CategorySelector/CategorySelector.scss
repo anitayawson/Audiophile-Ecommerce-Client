@@ -28,9 +28,18 @@
     align-items: center;
     margin-bottom: 4rem;
     padding-bottom: 1.375rem;
+    text-decoration: none;
 
     @include tablet {
       flex: 1;
+    }
+
+    @include desktop {
+      &:hover {
+        div > span {
+          color: $primary-orange;
+        }
+      }
     }
   }
 
