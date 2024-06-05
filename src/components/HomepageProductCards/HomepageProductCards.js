@@ -22,10 +22,18 @@ export default function HomepageProductCards() {
           ]
         );
 
+        const earphonesData = {
+          ...responseEarphones.data,
+          name: responseEarphones.data.name.replace(
+            "Wireless Earphones",
+            "Earphones"
+          ),
+        };
+
         setProducts({
           zx9Speaker: responseZx9.data,
           zx7Speaker: responseZx7.data,
-          earphones: responseEarphones.data,
+          earphones: earphonesData,
         });
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -78,8 +86,8 @@ export default function HomepageProductCards() {
         </Link>
       </article>
 
-      <div className="yx1__container">
-        <picture>
+      <div className="yx1">
+        <picture className="yx1__img-container">
           <source
             media="(max-width: 767px)"
             srcSet="https://res.cloudinary.com/duepohol4/image/upload/v1710782929/Audiophile/home/mobile/image-earphones-yx1_as5ch4.jpg"
@@ -96,7 +104,7 @@ export default function HomepageProductCards() {
         </picture>
 
         {/* YX1 Earphones Card */}
-        <article className="yx1">
+        <article className="yx1__card">
           <h4 className="yx1__title">{products.earphones?.name}</h4>
           <Link
             to={`/product/${products.earphones?.slug}`}

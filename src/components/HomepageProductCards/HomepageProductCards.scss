@@ -115,7 +115,7 @@
   justify-content: center;
   align-items: flex-start;
   height: 20rem;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 
   @include tablet {
     background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782906/Audiophile/home/tablet/image-speaker-zx7_inx4da.jpg");
@@ -137,60 +137,58 @@
 }
 
 .yx1 {
-  background-color: $primary-grey;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2.5625rem 0;
-  padding-left: 1rem;
-
-  @include tablet {
-    padding: 0 3.125rem;
-    width: 50%;
-  }
-
-  @include desktop {
-    width: 50%;
-  }
-
-  &__title {
-    @include heading-4;
-    margin-bottom: 2rem;
-  }
-
-  &__btn {
-    @include secondary-btn;
-  }
-
-  &__img {
-    width: 21.1875rem;
-    border-radius: 8px;
-
-    @include desktop {
-      width: 100%;
-    }
-  }
-}
-
-.yx1__container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 
   @include tablet {
     flex-direction: row;
-    gap: 0.625rem;
+    gap: 0.7rem;
   }
 
   @include desktop {
-    gap: 1.875rem;
+    gap: 1.5rem;
   }
-}
 
-.yx1__container picture {
-  @include tablet {
-    width: 50%;
+  &__img-container {
+    @include tablet {
+      flex: 1;
+      display: flex;
+    }
+  }
+
+  &__img {
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__card {
+    background-color: $primary-grey;
+    border-radius: 8px;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include tablet {
+      justify-content: center;
+      padding-left: 3.875rem;
+      width: 42%;
+    }
+
+    @include desktop {
+      width: 44%;
+      padding-left: 3.875rem;
+    }
+  }
+
+  &__title {
+    @include heading-4;
+  }
+
+  &__btn {
+    @include secondary-btn;
+    width: fit-content;
   }
 }
