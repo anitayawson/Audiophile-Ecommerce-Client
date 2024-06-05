@@ -107,27 +107,30 @@ export default function ProductDetails({
             </div>
           </div>
         </article>
-        {product.features && (
-          <div className="features">
-            <h3 className="product__subtitle">Features</h3>
-            {product.features.split("\n\n").map((paragraph, index) => (
-              <p key={index} className="features__description">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        )}
 
-        <div className="content">
-          <h3 className="product__subtitle">In the Box</h3>
-          <ul className="content__list">
-            {boxContent.map((content) => (
-              <li key={content.id} className="content__item">
-                <span className="content__qty">{content.quantity}x </span>
-                <span className="content__item">{content.item_name}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="product__details-wrapper">
+          {product.features && (
+            <div className="features">
+              <h3 className="product__subtitle">Features</h3>
+              {product.features.split("\n\n").map((paragraph, index) => (
+                <p key={index} className="features__description">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          )}
+
+          <div className="content">
+            <h3 className="product__subtitle">In the Box</h3>
+            <ul className="content__list">
+              {boxContent.map((content) => (
+                <li key={content.id} className="content__item">
+                  <span className="content__qty">{content.quantity}x </span>
+                  <span className="content__item">{content.item_name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="gallery">
