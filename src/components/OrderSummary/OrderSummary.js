@@ -17,11 +17,9 @@ export default function OrderSummary({
           <img src={item.image} alt={item.name} className="summary__item-img" />
           <div className="summary__item-details">
             <p className="summary__item-name">{item.name}</p>
-            <p className="summary__item-price">
-              $ {formatNumber(item.price * item.quantity)}
-            </p>
+            <p className="summary__item-price">$ {formatNumber(item.price)}</p>
           </div>
-          <p className="summary__quantity">{item.quantity}x</p>
+          <p className="summary__quantity">x{item.quantity}</p>
         </article>
       ))}
 
