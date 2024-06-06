@@ -90,6 +90,7 @@ function App() {
                 updateCartItems={updateCartItems}
                 cartItems={cartItems}
                 categories={categories}
+                handleCartOpen={handleCartOpen}
               />
             }
           />
@@ -111,6 +112,7 @@ function App() {
             ref={cartModalRef}
             cartItems={cartItems}
             setCartItems={setCartItems}
+            onClose={handleCartClose}
           />
         </Modal>
       </main>

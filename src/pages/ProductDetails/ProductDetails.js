@@ -12,6 +12,7 @@ export default function ProductDetails({
   updateCartItems,
   cartItems,
   categories,
+  handleCartOpen,
 }) {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -65,6 +66,8 @@ export default function ProductDetails({
     };
     const updatedCartItems = [...cartItems, newItem];
     updateCartItems(updatedCartItems);
+    window.scrollTo(0, 0);
+    handleCartOpen();
   };
 
   return (

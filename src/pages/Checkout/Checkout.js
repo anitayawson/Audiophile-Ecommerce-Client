@@ -319,7 +319,6 @@ export default function Checkout() {
                     name="options"
                     id="e-money"
                     value="e-money"
-                    checked={paymentMethod === "e-money"}
                     onChange={() => setPaymentMethod("e-money")}
                     defaultChecked
                   />

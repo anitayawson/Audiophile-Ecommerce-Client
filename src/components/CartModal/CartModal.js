@@ -3,10 +3,12 @@ import { Box } from "@mui/material";
 import { formatNumber } from "../../utils";
 import "./CartModal.scss";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CartIcon from "../../assets/icons/icon-cart.png";
 
-const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
+const CartModal = forwardRef(({ cartItems, setCartItems, onClose }, ref) => {
+  const navigate = useNavigate();
+
   const handleSetQuantity = (index, newQuantity) => {
     if (newQuantity === 0) {
       const updatedCartItems = cartItems.filter((item, idx) => idx !== index);
@@ -30,6 +32,11 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
   const removeAllItems = () => {
     setCartItems([]);
     localStorage.removeItem("cartItems");
+  };
+
+  const handleCheckout = () => {
+    onClose();
+    navigate("/checkout");
   };
 
   return (
@@ -79,9 +86,9 @@ const CartModal = forwardRef(({ cartItems, setCartItems }, ref) => {
               $ {formatNumber(calculateTotalPrice())}
             </h6>
           </div>
-          <Link to="/checkout" className="cart__checkout-btn">
+          <button onClick={handleCheckout} className="cart__checkout-btn">
             Checkout
-          </Link>
+          </button>
         </div>
       )}
     </Box>
