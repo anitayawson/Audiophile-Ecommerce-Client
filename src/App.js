@@ -12,6 +12,7 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Checkout from "./pages/Checkout/Checkout";
 import { Modal } from "@mui/material";
 import CartModal from "./components/CartModal/CartModal";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   const cartModalRef = useRef(null);
@@ -95,6 +96,7 @@ function App() {
             }
           />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Modal
           open={cartOpen}

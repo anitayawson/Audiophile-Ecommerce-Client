@@ -1,0 +1,62 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.error-page {
+  &__content-wrapper {
+    display: flex;
+    height: 95vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-image: url("../../assets/icons/404-icon-mobile.png");
+    background-position: top;
+    background-size: inherit;
+    background-repeat: no-repeat;
+
+    @include tablet {
+      padding: 2.5rem;
+      background-image: url("../../assets/icons/404-icon-tablet.png");
+    }
+
+    @include desktop {
+      padding: 4.5rem;
+      background-image: url("../../assets/icons/404-icon-desktop.png");
+    }
+  }
+
+  &__title {
+    @include heading-3;
+    text-align: center;
+
+    @include tablet {
+      @include heading-2;
+    }
+  }
+
+  &__subtitle {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    @include body;
+
+    @include tablet {
+      align-self: center;
+      width: 70%;
+    }
+  }
+
+  &__btn {
+    @include primary-btn;
+    width: 100%;
+
+    @include tablet {
+      width: fit-content;
+      align-self: center;
+    }
+  }
+}
