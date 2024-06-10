@@ -9,6 +9,7 @@ import InfoSection from "../../components/InfoSection/InfoSection";
 
 export default function Home({ categories }) {
   const [newProduct, setNewProduct] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const fetchNewProduct = async () => {
     try {
@@ -23,12 +24,13 @@ export default function Home({ categories }) {
 
   useEffect(() => {
     fetchNewProduct();
+    setTimeout(() => setIsLoaded(true), 200);
   }, []);
 
   return (
     <main>
       <header className="header">
-        <div className="header__body">
+        <div className={`header__body ${isLoaded ? "fade-in" : ""}`}>
           <p className="header__overline">New Product</p>
           <h1 className="header__title">{newProduct?.name}</h1>
           <p className="header__description">

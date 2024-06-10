@@ -1,6 +1,17 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+@keyframes fadeInBody {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .header {
   background-image: url("https://res.cloudinary.com/duepohol4/image/upload/v1710782932/Audiophile/home/mobile/image-header_agipob.jpg");
   background-color: $primary-black;
@@ -23,6 +34,9 @@
   &__body {
     text-align: center;
     margin-top: 5rem;
+    opacity: 0;
+    animation: fadeInBody 1.5s ease-in-out forwards;
+    animation-delay: 0.2s;
 
     @include desktop {
       text-align: left;
