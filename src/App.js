@@ -6,13 +6,23 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
 import Category from "./pages/Category/Category";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import CategorySelector from "./components/CategorySelector/CategorySelector";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Checkout from "./pages/Checkout/Checkout";
 import { Modal } from "@mui/material";
 import CartModal from "./components/CartModal/CartModal";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   const cartModalRef = useRef(null);
@@ -64,6 +74,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="nav-container">
         <NavBar
           toggleMenu={toggleMenu}
