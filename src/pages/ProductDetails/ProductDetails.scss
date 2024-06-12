@@ -199,3 +199,11 @@
     margin-bottom: 1rem;
   }
 }
+
+.related-products {
+  &__title {
+    @include heading-5;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+}

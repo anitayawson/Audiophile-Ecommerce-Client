@@ -7,6 +7,7 @@ import { formatNumber } from "../../utils";
 import QuantitySelector from "../../components/QuantitySelector/QuantitySelector";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 import InfoSection from "../../components/InfoSection/InfoSection";
+import RelatedProductCard from "../../components/RelatedProductCard/RelatedProductCard";
 
 export default function ProductDetails({
   updateCartItems,
@@ -20,6 +21,7 @@ export default function ProductDetails({
   const [boxContent, setBoxContent] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -184,6 +186,18 @@ export default function ProductDetails({
               alt={product.name}
             />
           </picture>
+        </div>
+
+        <div className="related-products">
+          <h3 className="related-products__title">You may also like</h3>
+          <div className="related-products__list">
+            {/* {relatedProducts.map((relatedProduct) => (
+              <RelatedProductCard
+                key={relatedProduct.id}
+                product={relatedProduct}
+              />
+            ))} */}
+          </div>
         </div>
       </div>
       <CategorySelector categories={categories} />

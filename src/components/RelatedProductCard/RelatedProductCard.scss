@@ -1,0 +1,17 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.related-product {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+
+  &__name {
+    @include heading-5;
+  }
+  &__btn {
+    @include primary-btn;
+  }
+}
