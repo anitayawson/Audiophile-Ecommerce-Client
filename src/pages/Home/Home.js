@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { BASE_URL } from "../../envVariables";
+// import { BASE_URL } from "../../envVariables";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import "./Home.scss";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 import HomepageProductCards from "../../components/HomepageProductCards/HomepageProductCards";
@@ -11,12 +11,29 @@ export default function Home({ categories }) {
   const [newProduct, setNewProduct] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
 
+  // const fetchNewProduct = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${BASE_URL}/api/products/category/1?isNew=1`
+  //     );
+  //     setNewProduct(response.data[0]);
+  //   } catch (error) {
+  //     console.error("Error fetching new product:", error);
+  //   }
+  // };
+
   const fetchNewProduct = async () => {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/api/products/category/1?isNew=1`
+      const response = await fetch("/data.json");
+      const data = await response.json();
+
+      const newest = data.find(
+        (product) => product.new === true && product.category === "headphones"
       );
-      setNewProduct(response.data[0]);
+
+      if (newest) {
+        setNewProduct(newest);
+      }
     } catch (error) {
       console.error("Error fetching new product:", error);
     }
@@ -37,9 +54,11 @@ export default function Home({ categories }) {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Link to={`/product/${newProduct.slug}`} className="header__btn">
-            See Product
-          </Link>
+          {newProduct?.slug ? (
+            <Link to={`/product/${newProduct.slug}`} className="header__btn">
+              See Product
+            </Link>
+          ) : null}
         </div>
       </header>
       <CategorySelector categories={categories} />

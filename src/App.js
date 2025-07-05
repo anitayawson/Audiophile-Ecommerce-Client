@@ -1,7 +1,7 @@
 import "./App.scss";
 import { useState, useRef, useEffect } from "react";
-import { BASE_URL } from "./envVariables";
-import axios from "axios";
+// import { BASE_URL } from "./envVariables";
+// import axios from "axios";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
@@ -32,16 +32,39 @@ function App() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    // const fetchCategories = async () => {
+    //   try {
+    //     const response = await axios.get(`${BASE_URL}/api/categories`);
+    //     setCategories(response.data);
+    //   } catch (error) {
+    //     console.error("Error fetching categories:", error);
+    //   }
+    // };
+
+    // fetchCategories();
+
+    const fetchCategoriesFromData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/categories`);
-        setCategories(response.data);
+        const response = await fetch("/data.json");
+        const data = await response.json();
+
+        const uniqueCategories = [
+          ...new Set(data.map((product) => product.category)),
+        ];
+
+        // Map them to an object if your CategorySelector or Footer expects more
+        const formatted = uniqueCategories.map((cat, index) => ({
+          id: index + 1,
+          name: cat,
+        }));
+
+        setCategories(formatted);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
     };
 
-    fetchCategories();
+    fetchCategoriesFromData();
 
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
