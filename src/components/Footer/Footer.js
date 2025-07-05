@@ -71,7 +71,7 @@ export default function Footer({ categories }) {
       </div>
 
       <div className="footer__tablet-wrapper">
-        <p className="footer__copyright">Copyright © 2024 Anita Yawson</p>
+        <p className="footer__copyright">Copyright © 2025 Anita Yawson</p>
         <div className="footer__social-icons">
           <a
             href="https://www.facebook.com/"

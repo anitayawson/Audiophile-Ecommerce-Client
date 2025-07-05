@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { BASE_URL } from "../../envVariables";
+// import { BASE_URL } from "../../envVariables";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import "./HomepageProductCards.scss";
 
 export default function HomepageProductCards() {
@@ -12,29 +12,52 @@ export default function HomepageProductCards() {
   });
 
   useEffect(() => {
+    // const fetchProducts = async () => {
+    //   try {
+    //     const [responseZx9, responseZx7, responseEarphones] = await Promise.all(
+    //       [
+    //         axios.get(`${BASE_URL}/api/products/id/6`),
+    //         axios.get(`${BASE_URL}/api/products/id/5`),
+    //         axios.get(`${BASE_URL}/api/products/id/1`),
+    //       ]
+    //     );
+
+    //     const earphonesData = {
+    //       ...responseEarphones.data,
+    //       name: responseEarphones.data.name.replace(
+    //         "Wireless Earphones",
+    //         "Earphones"
+    //       ),
+    //     };
+
+    //     setProducts({
+    //       zx9Speaker: responseZx9.data,
+    //       zx7Speaker: responseZx7.data,
+    //       earphones: earphonesData,
+    //     });
+    //   } catch (error) {
+    //     console.error("Error fetching products:", error);
+    //   }
+    // };
+
     const fetchProducts = async () => {
       try {
-        const [responseZx9, responseZx7, responseEarphones] = await Promise.all(
-          [
-            axios.get(`${BASE_URL}/api/products/id/6`),
-            axios.get(`${BASE_URL}/api/products/id/5`),
-            axios.get(`${BASE_URL}/api/products/id/1`),
-          ]
-        );
+        const response = await fetch("/data.json");
+        if (!response.ok) {
+          throw new Error("Failed to fetch products.json");
+        }
+        const data = await response.json();
 
-        const earphonesData = {
-          ...responseEarphones.data,
-          name: responseEarphones.data.name.replace(
-            "Wireless Earphones",
-            "Earphones"
-          ),
+        const zx9Speaker = data.find((p) => p.id === 6) || {};
+        const zx7Speaker = data.find((p) => p.id === 5) || {};
+        let earphones = data.find((p) => p.id === 1) || {};
+
+        earphones = {
+          ...earphones,
+          name: earphones.name.replace("Wireless Earphones", "Earphones"),
         };
 
-        setProducts({
-          zx9Speaker: responseZx9.data,
-          zx7Speaker: responseZx7.data,
-          earphones: earphonesData,
-        });
+        setProducts({ zx9Speaker, zx7Speaker, earphones });
       } catch (error) {
         console.error("Error fetching products:", error);
       }

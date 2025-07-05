@@ -91,7 +91,7 @@ export default function ProductDetails({
 
   const boxContent = product?.includes || [];
   const galleryImages = product?.gallery || {};
-  const relatedProducts = product?.others || [];
+  // const relatedProducts = product?.others || [];
 
   return (
     <section>
@@ -150,7 +150,7 @@ export default function ProductDetails({
               {boxContent.map((content) => (
                 <li key={content.id} className="content__item">
                   <span className="content__qty">{content.quantity}x </span>
-                  <span className="content__item">{content.item_name}</span>
+                  <span className="content__item">{content.item}</span>
                 </li>
               ))}
             </ul>
@@ -208,7 +208,7 @@ export default function ProductDetails({
         </div>
 
         <div className="related-products">
-          <h3 className="related-products__title">You may also like</h3>
+          {/* <h3 className="related-products__title">You may also like</h3> */}
           <div className="related-products__list">
             {/* {relatedProducts.map((relatedProduct) => (
               <RelatedProductCard
