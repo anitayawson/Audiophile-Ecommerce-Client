@@ -76,15 +76,15 @@ export default function Category({ categories }) {
           <picture>
             <source
               media="(max-width: 767px)"
-              srcSet={product.preview_images.mobile}
+              srcSet={product.categoryImage?.mobile}
             />
             <source
               media="(max-width: 1279px)"
-              srcSet={product.preview_images.tablet}
+              srcSet={product.categoryImage?.tablet}
             />
             <img
               className="category__product-img"
-              src={product.preview_images.desktop}
+              src={product.categoryImage?.desktop}
               alt={product.name}
             />
           </picture>

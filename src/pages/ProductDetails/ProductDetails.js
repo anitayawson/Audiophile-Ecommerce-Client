@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../envVariables";
+// import { BASE_URL } from "../../envVariables";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./ProductDetails.scss";
 import { formatNumber } from "../../utils";
 import QuantitySelector from "../../components/QuantitySelector/QuantitySelector";
@@ -18,34 +18,51 @@ export default function ProductDetails({
   const { slug } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
-  const [boxContent, setBoxContent] = useState([]);
-  const [galleryImages, setGalleryImages] = useState([]);
+  // const [boxContent, setBoxContent] = useState([]);
+  // const [galleryImages, setGalleryImages] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const [relatedProducts, setRelatedProducts] = useState([]);
+  // const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
+    // const fetchProductDetails = async () => {
+    //   try {
+    //     // Fetch product details
+    //     const productResponse = await axios.get(
+    //       `${BASE_URL}/api/products/slug/${slug}`
+    //     );
+    //     setProduct(productResponse.data);
+    //     console.log(productResponse.data);
+
+    //     const productId = productResponse.data.id;
+
+    //     // Fetch box content
+    //     const boxContentResponse = await axios.get(
+    //       `${BASE_URL}/api/box_content/product/${productId}`
+    //     );
+    //     setBoxContent(boxContentResponse.data);
+
+    //     // Fetch gallery images
+    //     const galleryImagesResponse = await axios.get(
+    //       `${BASE_URL}/api/gallery/product/${productId}`
+    //     );
+    //     setGalleryImages(galleryImagesResponse.data);
+    //   } catch (error) {
+    //     console.error("Error fetching product details:", error);
+    //   }
+    // };
+
     const fetchProductDetails = async () => {
       try {
-        // Fetch product details
-        const productResponse = await axios.get(
-          `${BASE_URL}/api/products/slug/${slug}`
-        );
-        setProduct(productResponse.data);
-        console.log(productResponse.data);
+        const response = await fetch("/data.json");
+        const data = await response.json();
 
-        const productId = productResponse.data.id;
+        const matchedProduct = data.find((p) => p.slug === slug);
+        if (!matchedProduct) {
+          console.error("Product not found");
+          return;
+        }
 
-        // Fetch box content
-        const boxContentResponse = await axios.get(
-          `${BASE_URL}/api/box_content/product/${productId}`
-        );
-        setBoxContent(boxContentResponse.data);
-
-        // Fetch gallery images
-        const galleryImagesResponse = await axios.get(
-          `${BASE_URL}/api/gallery/product/${productId}`
-        );
-        setGalleryImages(galleryImagesResponse.data);
+        setProduct(matchedProduct);
       } catch (error) {
         console.error("Error fetching product details:", error);
       }
@@ -63,7 +80,7 @@ export default function ProductDetails({
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product?.images?.mobile,
+      image: product?.image?.mobile,
       quantity: quantity,
     };
     const updatedCartItems = [...cartItems, newItem];
@@ -71,6 +88,10 @@ export default function ProductDetails({
     window.scrollTo(0, 0);
     handleCartOpen();
   };
+
+  const boxContent = product?.includes || [];
+  const galleryImages = product?.gallery || {};
+  const relatedProducts = product?.others || [];
 
   return (
     <section>
@@ -83,22 +104,20 @@ export default function ProductDetails({
           <picture>
             <source
               media="(max-width: 767px)"
-              srcSet={product?.images?.mobile}
+              srcSet={product?.image?.mobile}
             />
             <source
               media="(max-width: 1279px)"
-              srcSet={product?.images?.tablet}
+              srcSet={product?.image?.tablet}
             />
             <img
               className="product__img"
-              src={product?.images?.desktop}
+              src={product?.image?.desktop}
               alt={product.name}
             />
           </picture>
           <div className="product__content">
-            {product.isNew === 1 && (
-              <p className="product__new-product">New Product</p>
-            )}
+            {product.new && <p className="product__new-product">New Product</p>}
             <h2 className="product__name">{product.name}</h2>
             <p className="product__description">{product.description}</p>
             <h6 className="product__price">
@@ -143,30 +162,30 @@ export default function ProductDetails({
             <picture>
               <source
                 media="(max-width: 767px)"
-                srcSet={galleryImages[0]?.images?.first?.mobile}
+                srcSet={galleryImages?.first?.mobile}
               />
               <source
                 media="(max-width: 1279px)"
-                srcSet={galleryImages[0]?.images?.first?.tablet}
+                srcSet={galleryImages?.first?.tablet}
               />
               <img
                 className="gallery__img"
-                src={galleryImages[0]?.images?.first?.desktop}
+                src={galleryImages?.first?.desktop}
                 alt={product.name}
               />
             </picture>
             <picture>
               <source
                 media="(max-width: 767px)"
-                srcSet={galleryImages[0]?.images?.second?.mobile}
+                srcSet={galleryImages?.second?.mobile}
               />
               <source
                 media="(max-width: 1279px)"
-                srcSet={galleryImages[0]?.images?.second?.tablet}
+                srcSet={galleryImages?.second?.tablet}
               />
               <img
                 className="gallery__img"
-                srcSet={galleryImages[0]?.images?.second?.desktop}
+                srcSet={galleryImages?.second?.desktop}
                 alt={product.name}
               />
             </picture>
@@ -174,15 +193,15 @@ export default function ProductDetails({
           <picture>
             <source
               media="(max-width: 767px)"
-              srcSet={galleryImages[0]?.images?.third?.mobile}
+              srcSet={galleryImages?.third?.mobile}
             />
             <source
               media="(max-width: 1279px)"
-              srcSet={galleryImages[0]?.images?.third?.tablet}
+              srcSet={galleryImages?.third?.tablet}
             />
             <img
               className="gallery__img"
-              srcSet={galleryImages[0]?.images?.third?.desktop}
+              srcSet={galleryImages?.third?.desktop}
               alt={product.name}
             />
           </picture>

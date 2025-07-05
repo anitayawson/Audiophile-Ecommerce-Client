@@ -2,10 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "@mui/material";
-import { BASE_URL } from "../../envVariables";
+// import { BASE_URL } from "../../envVariables";
 import * as Yup from "yup";
 import InputMask from "react-input-mask";
-import axios from "axios";
+// import axios from "axios";
 import "./Checkout.scss";
 import OrderSummary from "../../components/OrderSummary/OrderSummary";
 import OrderConfirmationModal from "../../components/OrderConfirmationModal/OrderConfirmationModal";
@@ -69,14 +69,24 @@ export default function Checkout() {
           items: cartItems,
         };
 
-        const response = await axios.post(`${BASE_URL}/api/orders`, orderData);
+        console.log("Simulated order data:", orderData);
         resetForm();
         showOrderConfirmation();
 
-        console.log("Order submitted successfully:", response.data);
+        localStorage.removeItem("cartItems");
+        setCartItems([]);
       } catch (error) {
-        console.error("Error submitting order: ", error);
+        console.error("Error submitting order:", error);
       }
+
+      //   const response = await axios.post(`${BASE_URL}/api/orders`, orderData);
+      //   resetForm();
+      //   showOrderConfirmation();
+
+      //   console.log("Order submitted successfully:", response.data);
+      // } catch (error) {
+      //   console.error("Error submitting order: ", error);
+      // }
     },
   });
 
